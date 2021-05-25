@@ -1,0 +1,56 @@
+﻿  Operations.cpp
+C:\C++\Others\ProiectLC+SP\Operations.cpp(41,23): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(48,22): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(66,26): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(103,43): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(111,44): warning C4018: '>=': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(128,54): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(144,54): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(195,43): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(203,44): warning C4018: '>=': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(221,48): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(234,50): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(249,50): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(280,26): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(330,31): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(363,26): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(402,36): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(410,40): warning C4018: '>=': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(445,30): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(473,25): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(492,36): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(545,33): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(570,22): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(600,22): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(666,35): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(674,32): warning C4018: '>=': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(749,45): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(757,42): warning C4018: '>=': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(843,35): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(851,32): warning C4018: '>=': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(920,45): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(928,42): warning C4018: '>=': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(988,22): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(989,26): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(999,42): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1025,47): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1116,54): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1153,22): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1160,21): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1198,34): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1245,30): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1248,30): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1324,30): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1341,30): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1453,42): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1481,43): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1572,54): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1634,34): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1679,26): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1682,26): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1765,30): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1786,30): warning C4018: '<': signed/unsigned mismatch
+C:\C++\Others\ProiectLC+SP\Operations.cpp(1909,26): warning C4018: '<': signed/unsigned mismatch
+  UI.cpp
+  Generating Code...
+  PROIECTSP_LC.vcxproj -> C:\C++\Others\ProiectLC+SP\Debug\PROIECTSP_LC.exe
