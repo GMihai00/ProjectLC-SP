@@ -6,6 +6,7 @@
 using namespace std;
 
 
+
 int op1(int );
 
 int op2(int , int );

@@ -6,6 +6,7 @@
 
 using namespace std;
 
+
 // arborele se modifica la fiecare in parte !!!!!!!!!!!//
 class Fprop; // prototip clasa//
 

@@ -277,7 +277,7 @@ void Arbore::update_height(Node* cur, int val)
 
 }
 
-ostream& Arbore::Afisare(ostream &out)
+ostream& Arbore::Afisare(ostream &ost)
 {
 
     queue <Node*> q;
@@ -343,44 +343,44 @@ ostream& Arbore::Afisare(ostream &out)
 
 
              for(int i = 1; i <=nrspaces; i++)
-                        out <<" ";
+                        ost <<" ";
 
              for(int j = 0; j < vprint.size(); j++)
              {
 
                  if(vprint[j] != NULL)
-                        out <<"* * *";
+                        ost <<"* * *";
                  else
-                        out <<"     ";
+                        ost <<"     ";
                  for(int i = 1; i <= gapsamelevel; i++)
-                    out <<" ";
+                    ost <<" ";
 
 
              }
 
-             out <<"\n\n";
+             ost <<"\n\n";
 
                   for(int i = 1; i <= nrspaces; i++)
-                        out <<" ";
+                        ost <<" ";
              for(int j = 0; j < vprint.size(); j++)
              {
 
                  if(vprint[j] == NULL)
-                     out <<"     ";
+                     ost <<"     ";
                 else
-                     out <<"* " << vprint[j]->key <<" *";
+                     ost <<"* " << vprint[j]->key <<" *";
 
 
                  for(int i = 1; i <= gapsamelevel; i++)
-                    out <<" ";
+                    ost <<" ";
 
 
              }
 
-             out <<"\n\n";
+             ost <<"\n\n";
 
                for(int i = 1; i <= nrspaces - nrtap; i++)
-                out <<" ";
+                ost <<" ";
 
 
 
@@ -391,31 +391,31 @@ ostream& Arbore::Afisare(ostream &out)
                 {
                     if(vprint[j]->left_child != NULL)
                         for(int i = 1; i <= nrtap; i++)
-                            out <<"_";
+                            ost <<"-";
                     else
                         for(int i = 1; i <= nrtap; i++)
-                            out <<" ";
+                            ost <<" ";
 
-                 out <<"* * *";
+                 ost <<"* * *";
 
 
                     if(vprint[j]->right_child != NULL)
                         for(int i = 1; i <= nrtap; i++)
-                            out <<"_";
+                            ost <<"-";
                     else
                         for(int i = 1; i <= nrtap; i++)
-                            out <<" ";
+                            ost <<" ";
                 }
                 else
                     for(int i = 1; i <= nrtap *2 + 5; i++)
-                        out <<" ";
+                        ost <<" ";
 
                  for(int i = 1; i <= gapsamelevel - 2 * nrtap; i++)
-                    out <<" ";
+                    ost <<" ";
              }
 
 
-             out <<'\n';
+              ost <<"\n";
 
 
 
@@ -431,6 +431,6 @@ ostream& Arbore::Afisare(ostream &out)
 
     }
 
-  return out;
+  return ost;
 }
 

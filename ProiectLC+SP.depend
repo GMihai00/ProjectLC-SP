@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1620327911 source:c:\c++\others\proiectlc+sp\arbore.cpp
+1621968583 source:c:\c++\others\proiectlc+sp\arbore.cpp
 	"Arbore.h"
 	"Operations.h"
 
-1620327923 c:\c++\others\proiectlc+sp\arbore.h
+1621962005 c:\c++\others\proiectlc+sp\arbore.h
 	<bits/stdc++.h>
 	"Operations.h"
 
-1620586459 c:\c++\others\proiectlc+sp\operations.h
+1621962069 c:\c++\others\proiectlc+sp\operations.h
 	<bits/stdc++.h>
 
 1620931363 source:c:\c++\others\proiectlc+sp\fnc.cpp
@@ -50,7 +50,7 @@
 	<bits/stdc++.h>
 	"UI.h"
 
-1621928194 c:\c++\others\proiectlc+sp\ui.h
+1621961983 c:\c++\others\proiectlc+sp\ui.h
 	<bits/stdc++.h>
 	"Operations.h"
 	"Arbore.h"
@@ -480,7 +480,7 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1621875557 source:c:\c++\others\proiectlc+sp\operations.cpp
+1621962092 source:c:\c++\others\proiectlc+sp\operations.cpp
 	"Operations.h"
 
 1618340124 source:c:\c++\others\proiectlc+sp\read.cpp
@@ -490,9 +490,9 @@
 1618340076 c:\c++\others\proiectlc+sp\read.h
 	<bits/stdc++.h>
 
-1621948463 source:c:\c++\others\proiectlc+sp\menu.cpp
+1621968202 source:c:\c++\others\proiectlc+sp\menu.cpp
 	"Menu.h"
 
-1621950712 source:c:\c++\others\proiectlc+sp\ui.cpp
+1621955891 source:c:\c++\others\proiectlc+sp\ui.cpp
 	"UI.h"
 
