@@ -3,7 +3,7 @@
 
 Menu::Menu(float w, float h)
 {
-    if(!font.loadFromFile("arial.ttf"))
+    if(!font.loadFromFile("Semi-Coder-Regular.otf"))
     {
         //eroare
     }
@@ -229,7 +229,7 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->getarbore()->Afisare(ss);
                     ss <<'\n';
                     ss <<"Forma in sintaxa stricta :" << ex->getformula()<<'\n';
-                    cout << ss.str();
+
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
                     txt[cur_window][0].setStyle(sf::Text::Style::Regular);
@@ -468,7 +468,7 @@ void Menu::enter(sf::RenderWindow &window)
                     else
                         ss <<"Formula nu este satisfiabila\n";
 
-                    cout << ss.str();
+
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
                     this->draw(window);
@@ -493,7 +493,6 @@ void Menu::enter(sf::RenderWindow &window)
                     else
                         ss <<"Formula nu este valida\n";
 
-                    cout << ss.str();
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
                     this->draw(window);
@@ -526,7 +525,7 @@ void Menu::enter(sf::RenderWindow &window)
                     else
                         ss <<"Formulele nu sunt echivalente\n";
 
-                    cout << ss.str();
+
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][1].setString("");
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
@@ -546,7 +545,7 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->getarbore()->Afisare(ss);
                     ss <<'\n';
                     ss <<"Forma FNN a formulei este :" << ex->getformula()<<'\n';
-                    cout << ss.str();
+
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
                     this->draw(window);
@@ -565,7 +564,7 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->getarbore()->Afisare(ss);
                     ss <<'\n';
                     ss <<"Forma FND a formulei este :" << ex->getformula()<<'\n';
-                    cout << ss.str();
+
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
                     this->draw(window);
@@ -583,7 +582,7 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->getarbore()->Afisare(ss);
                     ss <<'\n';
                     ss <<"Forma FNC a formulei este :" << ex->getformula()<<'\n';
-                    cout << ss.str();
+
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
                     this->draw(window);
