@@ -96,9 +96,22 @@ Menu::Menu(float w, float h)
     f.setColor(sf::Color::White);
     txt[2].push_back(f);
 
+
     f.setFont(font);
-    f.setPosition(sf::Vector2f(w / 2.3, h / 3 * 2));
-    f.setString("Introduceti multimea de clauze cu formatul literal->valoare de adevar(0/1) separate printr- un spatiu");
+    f.setPosition(sf::Vector2f(w / 2.3, h / 4 ));
+    f.setString("Introduceti formula prop.");
+    f.setColor(sf::Color::White);
+    txt[3].push_back(f);
+
+    f.setFont(font);
+    f.setPosition(sf::Vector2f(w / 2.3, h / 4 * 2));
+    f.setString("Literalul");
+    f.setColor(sf::Color::White);
+    txt[3].push_back(f);
+
+    f.setFont(font);
+    f.setPosition(sf::Vector2f(w / 2.3, h / 4 * 3));
+    f.setString("Valoarea de adevar(A/F)");
     f.setColor(sf::Color::White);
     txt[3].push_back(f);
 
@@ -156,10 +169,18 @@ void Menu::enter(sf::RenderWindow &window)
             switch(cur_line)
             {
 
+                case 1:
+                {
+                    cur_window = 3;
+                    cur_line  = 0;
+                    txt[cur_window][cur_line].setColor(sf::Color::Green);
+                    break;
+                }
                 case 4:
                 {
                     cur_window = 2;
                     cur_line = 0;
+                    txt[cur_window][cur_line].setColor(sf::Color::Green);
                     break;
                 }
 
@@ -172,6 +193,7 @@ void Menu::enter(sf::RenderWindow &window)
                 {
                     cur_window = 1;
                     cur_line = 0;
+                    txt[cur_window][cur_line].setColor(sf::Color::Green);
                     break;
 
                 }
@@ -182,10 +204,14 @@ void Menu::enter(sf::RenderWindow &window)
 
     default:
     {
+        txt[cur_window][cur_line].setColor(sf::Color::White);
        if(cur_line < txt[cur_window].size())
             cur_line++;
+        if(cur_line < txt[cur_window].size())
+        txt[cur_window][cur_line].setColor(sf::Color::Green);
 
-       if(cur_line == txt[cur_window].size())
+
+       if(cur_line == txt[cur_window].size() || cur_window == 3 && cur_line == 1)
        {
             Fprop* ex;
             switch(last_line)
@@ -197,6 +223,8 @@ void Menu::enter(sf::RenderWindow &window)
                     string s = txt[cur_window][0].getString();
                     ex->setformula(s);
                     ex->update_arbore();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
                     ex->getarbore()->Afisare(cout);
                     cout <<'\n';
                     cout <<"Forma in sintaxa stricta :" << ex->getformula()<<'\n';
@@ -208,66 +236,184 @@ void Menu::enter(sf::RenderWindow &window)
                 {
                     ex = new Fprop;
 
-                    string s = txt[cur_window][0].getString();;
+                    string s = txt[cur_window][0].getString();
 
                     ex->setformula(s);
                     ex->update_arbore();
                     ex->update_literali();
-
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
                     int size_literali = ex->get_size_literali();
-                    cout <<"Introduceti valorile de adevar ale literalilor.Valorile de adevar trebuie introduse sub formatul nume_literal valoare_adevar(A/F).\n";
 
                     string s1;
                     map <string, int> m;
                     set <string> sl;
 
-                    window.close();
-                    while(cin >> s1)
+
+                    while(window.isOpen())
                     {
-
-                        if(ex->verif_is_in_set(s1) == false)
+                        int line = cur_line;
+                        txt[cur_window][cur_line].setColor(sf::Color::Green);
+                        sf::Event event;
+                        while(window.pollEvent(event))
                         {
-                            cout << s1;
-                            string val;
-                            cin >> val;
-                            cout <<"Eroare.Literalul respectiv nu exista in formula\n";
-                             fflush(stdin);
 
-                        }
-                        else
-                        {
-                            string val;
-                            cin >> val;
-
-                            if(sl.find(s1) == sl.end())
+                            switch(event.type)
                             {
-                                if(val == "A")
+                                case sf::Event::TextEntered:
                                 {
-                                    m[s1] = 1;
-                                    sl.insert(s);
-                                }
-                                else
-                                if(val == "F")
-                                {
-                                    m[s1] = 0;
-                                    sl.insert(s1);
-                                }
-                                else
-                                {
-                                    cout <<"Eroare!Ati introdus o valoare de adevar inexistenta\n";
+
+
+                                    switch(line)
+                                    {
+                                    case 0:
+                                        {
+                                            this->complete(event.text.unicode);
+                                            break;
+                                        }
+                                    case 1:
+                                        {
+                                            this->complete2(event.text.unicode);
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            this->complete3(event.text.unicode);
+                                            break;
+                                        }
+                                    }
+                                    break;
+
                                 }
 
+                                case sf::Event::Closed:
+                                {
+                                    window.close();
+                                    break;
+                                }
+
+                                case sf::Event::KeyReleased:
+                                {
+                                    switch(event.key.code)
+                                    {
+
+                                       case sf::Keyboard::Enter:
+                                       {
+                                           string s1;
+                                            switch(line)
+                                            {
+                                            case 0:
+                                                {
+                                                    this->removec();
+                                                    this->enter(window);
+                                                    break;
+                                                }
+                                            case 1:
+                                                {
+                                                    this->removec2();
+                                                    s1 = txt[cur_window][cur_line].getString();
+
+                                                    if(ex->verif_is_in_set(s1) == false)
+                                                    {
+                                                        txt[cur_window][cur_line].setString("Eroare.Literalul respectiv nu exista in formula");
+
+                                                    }
+                                                    else
+                                                    if(sl.find(s1) != sl.end())
+                                                    {
+                                                         txt[cur_window][cur_line].setString("Eroare.Literalul respectiv are deja o interpretare");
+                                                    }
+                                                    else
+                                                    {
+
+                                                         txt[cur_window][cur_line].setColor(sf::Color::White);
+                                                        cur_line++;
+                                                    }
+
+
+
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    this->removec3();
+                                                    s1 = txt[cur_window][cur_line].getString();
+                                                    if(!(s1 == "A" || s1 == "F"))
+                                                        txt[cur_window][cur_line].setString("Eroare.Introduceti o valoare de adevar valida");
+                                                    else
+                                                    {
+                                                        txt[cur_window][cur_line].setColor(sf::Color::White);
+                                                        cur_line--;
+                                                        s1 = txt[cur_window][cur_line].getString();
+                                                        string val;
+                                                        val = txt[cur_window][cur_line + 1].getString();
+                                                        if(val == "A")
+                                                        {
+                                                            m[s1] = 1;
+                                                            sl.insert(s1);
+                                                        }
+                                                        else
+                                                        if(val == "F")
+                                                        {
+                                                            m[s1] = 0;
+                                                            sl.insert(s1);
+                                                        }
+
+
+                                                         if(sl.size() == size_literali)
+                                                                window.close();
+                                                        txt[cur_window][1].setString("Literalul");
+                                                        txt[cur_window][2].setString("Valoarea de adevar(A/F)");
+                                                    }
+
+                                                    break;
+                                                }
+                                            }
+                                            break;
+                                       }
+
+                                       case sf::Keyboard::Backspace:
+                                        {
+                                            switch(line)
+                                            {
+                                            case 0:
+                                                {
+                                                    this->removec();
+                                                    this->removec();
+                                                    break;
+                                                }
+                                            case 1:
+                                                {
+                                                    this->removec2();
+                                                    this->removec2();
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    this->removec3();
+                                                    this->removec3();
+                                                    break;
+                                                }
+                                            }
+                                            break;
+                                        }
+
+                                       case sf::Keyboard::Escape:
+                                        {
+
+                                            window.close();
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
                             }
-                            else
-                                cout <<"Eroare!Ati introdus deja valoarea de adevar a acestui literal\n";
-
-
-                            fflush(stdin);
-                             if(sl.size() == size_literali)
-                                break;
                         }
+                        this->draw(window);
+
 
                     }
+
 
                     cout <<"Valoarea de adevar sub interpretarea data a expresiei  este:";
 
@@ -295,6 +441,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->update_satisfiabilitate();
 
                     int y = ex->getsatisfiabilitate();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
 
                     if(y == 1)
                         cout <<"Formula este satisfiabila\n";
@@ -313,6 +461,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->update_validitate();
 
                     int y = ex->getvaliditate();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
 
                     if(y == 1)
                         cout <<"Formula este valida\n";
@@ -328,6 +478,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->setformula(s);
                     ex->update_arbore();
                     ex->update_literali();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
 
                     Fprop* ex2 = new Fprop;
 
@@ -336,6 +488,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex2->setformula(s2);
                     ex2->update_arbore();
                     ex2->update_literali();
+                    txt[cur_window][1].setString(ex2->getformula());
+                    this->draw(window);
 
 
                     if(echivalent(*ex, *ex2))
@@ -353,6 +507,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->setformula(s);
                     ex->transformareFNN();
                     ex->update_arbore();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
                     ex->getarbore()->Afisare(cout);
                     cout <<'\n';
                     cout <<"Forma FNN a formulei este :" << ex->getformula()<<'\n';
@@ -367,6 +523,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->setformula(s);
                     ex->transformare_in_FND();
                     ex->update_arbore();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
                     ex->getarbore()->Afisare(cout);
                     cout <<'\n';
                     cout <<"Forma FND a formulei este :" << ex->getformula()<<'\n';
@@ -380,6 +538,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->setformula(s);
                     ex->transformare_in_FNC();
                     ex->update_arbore();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
                     ex->getarbore()->Afisare(cout);
                     cout <<'\n';
                     cout <<"Forma FNC a formulei este :" << ex->getformula()<<'\n';
@@ -393,6 +553,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->setformula(s);
                     ex->transformare_in_FNC();
                     ex->update_arbore();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
                     ex->update_literali();
                     ex->update_clauze();
                     ex->rezolutie();
@@ -406,6 +568,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->setformula(s);
                     ex->transformare_in_FNC();
                     ex->update_arbore();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
                     ex->update_literali();
                     ex->update_clauze();
                     ex->DP();
@@ -419,6 +583,8 @@ void Menu::enter(sf::RenderWindow &window)
                     ex->setformula(s);
                     ex->transformare_in_FNC();
                     ex->update_arbore();
+                    txt[cur_window][0].setString(ex->getformula());
+                    this->draw(window);
                     ex->update_literali();
                     ex->update_clauze();
                     ex->DPLL();
@@ -447,6 +613,38 @@ void Menu::complete(char x)
 
 }
 
+void Menu::complete2(char x)
+{
+      if(cur_line < txt[cur_window].size())
+    {
+        string a = txt[cur_window][cur_line].getString();
+        if(a == "Literalul")
+            a.clear();
+        if(a == "Eroare.Literalul respectiv nu exista in formula")
+            a.clear();
+
+        if(a == "Eroare.Literalul respectiv are deja o interpretare")
+            a.clear();
+        a.push_back(x);
+        txt[cur_window][cur_line].setString(a);
+    }
+}
+
+void Menu::complete3(char x)
+{
+      if(cur_line < txt[cur_window].size())
+    {
+        string a = txt[cur_window][cur_line].getString();
+        if(a == "Valoarea de adevar(A/F)")
+            a.clear();
+        if(a == "Eroare.Introduceti o valoare de adevar valida")
+            a.clear();
+        a.push_back(x);
+        txt[cur_window][cur_line].setString(a);
+    }
+}
+
+
 void Menu::removec()
 {
     if(cur_line < txt[cur_window].size())
@@ -465,8 +663,59 @@ void Menu::removec()
     }
 }
 
+void Menu::removec2()
+{
+    if(cur_line < txt[cur_window].size())
+    {
+        string a = txt[cur_window][cur_line].getString();
+
+        if(a == "Literalul")
+            a.clear();
+
+        if(a == "Eroare.Literalul respectiv nu exista in formula")
+            a.clear();
+
+        if(a == "Eroare.Literalul respectiv are deja o interpretare")
+            a.clear();
+
+        if(a.size() != 0)
+            a.pop_back();
+
+        if(a.size() == 0)
+            a = "Literalul";
+        txt[cur_window][cur_line].setString(a);
+
+    }
+}
+
+void Menu::removec3()
+{
+    if(cur_line < txt[cur_window].size())
+    {
+        string a = txt[cur_window][cur_line].getString();
+
+        if(a == "Valoarea de adevar(A/F)")
+            a.clear();
+        if(a.size() != 0)
+            a.pop_back();
+
+        if(a == "Eroare.Introduceti o valoare de adevar valida")
+            a.clear();
+        if(a.size() == 0)
+            a = "Valoarea de adevar(A/F)";
+        txt[cur_window][cur_line].setString(a);
+
+    }
+}
+
+
 int Menu::get_window()
 {
     return this->cur_window;
+}
+
+int Menu::get_line()
+{
+    return this->cur_line;
 }
 

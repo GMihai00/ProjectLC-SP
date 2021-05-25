@@ -35,8 +35,13 @@ public:
     void moveotherscreen();
     void enter(sf::RenderWindow &window);
     void complete(char x);
+    void complete2(char x);
+    void complete3(char x);
     void removec();
+    void removec2();
+    void removec3();
     int get_window();
+    int get_line();
 
 };
 

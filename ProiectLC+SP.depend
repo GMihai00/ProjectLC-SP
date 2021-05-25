@@ -61,7 +61,7 @@
 	"Menu.h"
 	<SFML/Graphics.hpp>
 
-1621937529 c:\c++\others\proiectlc+sp\menu.h
+1621944361 c:\c++\others\proiectlc+sp\menu.h
 	<SFML/Graphics.hpp>
 	<bits/stdc++.h>
 	"Operations.h"
@@ -490,9 +490,9 @@
 1618340076 c:\c++\others\proiectlc+sp\read.h
 	<bits/stdc++.h>
 
-1621938764 source:c:\c++\others\proiectlc+sp\menu.cpp
+1621948463 source:c:\c++\others\proiectlc+sp\menu.cpp
 	"Menu.h"
 
-1621938548 source:c:\c++\others\proiectlc+sp\ui.cpp
+1621950712 source:c:\c++\others\proiectlc+sp\ui.cpp
 	"UI.h"
 
