@@ -25,16 +25,16 @@ public:
 
      // operatii specifice //
 
-     void transformare_in_FNC();
+     void transformare_in_FNC(ostringstream& );
      void update_clauze();
      void build_formula_from_clauze(); //WIP//
      //DP , DPLL, rezolutie //
-     void rezolutie();
+     void rezolutie(ostringstream& );
 
     // constructori//
     FNC(set <set <string> > = { { {} } }, string = "",Arbore* = NULL);
-    void DP();
-    void DPLL();
+    void DP(ostringstream&);
+    void DPLL(ostringstream& );
 
 
 

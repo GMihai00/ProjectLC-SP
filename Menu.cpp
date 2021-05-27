@@ -115,6 +115,11 @@ Menu::Menu(float w, float h)
     f.setColor(sf::Color::White);
     txt[3].push_back(f);
 
+    f.setFont(font);
+    f.setPosition(sf::Vector2f(0.0, 0.0));
+    f.setColor(sf::Color::White);
+    txt[4].push_back(f);
+
 
 
 
@@ -125,7 +130,109 @@ Menu::~Menu()
 
 }
 
+void Menu::resetapp()
+{
+    float w = width;
+    float h = height;
+    int sw = 13;
+    cur_window = 0;
+    cur_line = 0;
+    last_line = 0;
+    txt[0][0].setString("Relaxat->Strict");
+    txt[0][0].setColor(sf::Color::Green);
+    txt[0][0].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1)));
+    txt[0][0].setCharacterSize(30);
 
+    txt[0][1].setString("Valoare adevar");
+    txt[0][1].setColor(sf::Color::White);
+    txt[0][1].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 2));
+    txt[0][1].setCharacterSize(30);
+
+    txt[0][2].setString("Satisfiabilitate");
+    txt[0][2].setColor(sf::Color::White);
+    txt[0][2].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 3));
+    txt[0][2].setCharacterSize(30);
+
+    txt[0][3].setString("Validitate");
+    txt[0][3].setColor(sf::Color::White);
+    txt[0][3].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 4));
+    txt[0][3].setCharacterSize(30);
+
+    txt[0][4].setString("Echivalenta");
+    txt[0][4].setColor(sf::Color::White);
+    txt[0][4].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 5));
+    txt[0][4].setCharacterSize(30);
+
+    txt[0][5].setString("Trans FNN");
+    txt[0][5].setColor(sf::Color::White);
+    txt[0][5].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 6));
+    txt[0][5].setCharacterSize(30);
+
+    txt[0][6].setString("Trans FND");
+    txt[0][6].setColor(sf::Color::White);
+    txt[0][6].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 7));
+    txt[0][6].setCharacterSize(30);
+
+    txt[0][7].setString("Trans FNC");
+    txt[0][7].setColor(sf::Color::White);
+    txt[0][7].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 8));
+    txt[0][7].setCharacterSize(30);
+
+    txt[0][8].setString("Rezolutie");
+    txt[0][8].setColor(sf::Color::White);
+    txt[0][8].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 9));
+    txt[0][8].setCharacterSize(30);
+
+    txt[0][9].setString("DP");
+    txt[0][9].setColor(sf::Color::White);
+    txt[0][9].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 10));
+    txt[0][9].setCharacterSize(30);
+
+    txt[0][10].setString("DPLL");
+    txt[0][10].setColor(sf::Color::White);
+    txt[0][10].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 11));
+    txt[0][10].setCharacterSize(30);
+
+    txt[0][11].setString("Iesire");
+    txt[0][11].setColor(sf::Color::White);
+    txt[0][11].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 12));
+    txt[0][11].setCharacterSize(30);
+
+    txt[1][0].setPosition(sf::Vector2f(w / 2.3, h / 2));
+    txt[1][0].setString("Introduceti formula prop.");
+    txt[1][0].setColor(sf::Color::White);
+    txt[1][0].setCharacterSize(30);
+
+    txt[2][0].setPosition(sf::Vector2f(w / 2.3, h / 3 ));
+    txt[2][0].setString("Introduceti formula prop.");
+    txt[2][0].setColor(sf::Color::White);
+    txt[2][0].setCharacterSize(30);
+
+    txt[2][1].setPosition(sf::Vector2f(w / 2.3, h / 4 * 2));
+    txt[2][1].setString("Introduceti formula prop.");;
+    txt[2][1].setColor(sf::Color::White);
+    txt[2][1].setCharacterSize(30);
+
+    txt[3][0].setPosition(sf::Vector2f(w / 2.3, h / 4 ));
+    txt[3][0].setString("Introduceti formula prop.");
+    txt[3][0].setColor(sf::Color::White);
+    txt[3][0].setCharacterSize(30);
+
+
+    txt[3][1].setPosition(sf::Vector2f(w / 2.3, h / 4 * 2 ));
+    txt[3][1].setString("Literalul");
+    txt[3][1].setColor(sf::Color::White);
+    txt[3][1].setCharacterSize(30);
+
+
+    txt[3][2].setPosition(sf::Vector2f(w / 2.3, h / 4 * 3 ));
+    txt[3][2].setString("Valoarea de adevar(A/F)");
+    txt[3][2].setColor(sf::Color::White);
+    txt[3][2].setCharacterSize(30);
+
+
+
+}
 void Menu::draw(sf::RenderWindow &window)
 {
     window.clear();
@@ -202,17 +309,24 @@ void Menu::enter(sf::RenderWindow &window)
             break;
         }
 
+    case 4:
+    {
+           this->resetapp();
+           this->draw(window);
+
+           break;
+    }
     default:
     {
         txt[cur_window][cur_line].setColor(sf::Color::White);
-       if(cur_line < txt[cur_window].size())
+        if(cur_line < txt[cur_window].size())
             cur_line++;
         if(cur_line < txt[cur_window].size())
         txt[cur_window][cur_line].setColor(sf::Color::Green);
 
 
-       if(cur_line == txt[cur_window].size() || cur_window == 3 && cur_line == 1)
-       {
+        if(cur_line == txt[cur_window].size() || cur_window == 3 && cur_line == 1)
+        {
             ostringstream ss;
             Fprop* ex;
             switch(last_line)
@@ -221,8 +335,10 @@ void Menu::enter(sf::RenderWindow &window)
                 {
                     ex = new Fprop;
 
+
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
+                    cur_window = 4;
+                    ex->setformula(s, ss);
                     ex->update_arbore();
                     txt[cur_window][0].setString(ex->getformula());
 
@@ -230,12 +346,18 @@ void Menu::enter(sf::RenderWindow &window)
                     ss <<'\n';
                     ss <<"Forma in sintaxa stricta :" << ex->getformula()<<'\n';
 
+
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
                     txt[cur_window][0].setStyle(sf::Text::Style::Regular);
-                    txt[cur_window][0].setLetterSpacing(0.5);
-                    txt[cur_window][0].setLineSpacing(0.5);
+
+                    int f = string(txt[cur_window][0].getString()).size();
+                    f = 1ll * this->width * this->height / 100 /  f;
+
+                    txt[cur_window][0].setCharacterSize(f);
                     this->draw(window);
+
+
                     break;
 
 
@@ -247,7 +369,7 @@ void Menu::enter(sf::RenderWindow &window)
 
                     string s = txt[cur_window][0].getString();
 
-                    ex->setformula(s);
+                    ex->setformula(s, ss);
                     ex->update_arbore();
                     ex->update_literali();
                     txt[cur_window][0].setString(ex->getformula());
@@ -436,15 +558,13 @@ void Menu::enter(sf::RenderWindow &window)
 
                     ss <<'\n';
 
-                    cout << ss.str();
 
-                    txt[cur_window][1].setString("");
-                    txt[cur_window][2].setString("");
+                    cur_window = 4;
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
 
-
                     this->draw(window);
+                    cur_window = 4;
 
 
                     break;
@@ -454,7 +574,7 @@ void Menu::enter(sf::RenderWindow &window)
                     ex = new Fprop;
 
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
+                    ex->setformula(s, ss);
                     ex->update_arbore();
                     ex->update_literali();
                     ex->update_satisfiabilitate();
@@ -469,9 +589,11 @@ void Menu::enter(sf::RenderWindow &window)
                         ss <<"Formula nu este satisfiabila\n";
 
 
+
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
                     this->draw(window);
+                    cur_window= 4;
                     break;
                 }
                 case 3:
@@ -479,7 +601,7 @@ void Menu::enter(sf::RenderWindow &window)
                     ex = new Fprop;
 
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
+                    ex->setformula(s, ss);
                     ex->update_arbore();
                     ex->update_literali();
                     ex->update_validitate();
@@ -493,9 +615,12 @@ void Menu::enter(sf::RenderWindow &window)
                     else
                         ss <<"Formula nu este valida\n";
 
+                    cur_window = 4;
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
+
                     this->draw(window);
+
                     break;
                 }
                 case 4:
@@ -503,7 +628,7 @@ void Menu::enter(sf::RenderWindow &window)
                     ex = new Fprop;
 
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
+                    ex->setformula(s, ss);
                     ex->update_arbore();
                     ex->update_literali();
                     txt[cur_window][0].setString(ex->getformula());
@@ -513,10 +638,11 @@ void Menu::enter(sf::RenderWindow &window)
 
                     string s2 = txt[cur_window][1].getString();
 
-                    ex2->setformula(s2);
+                    ex2->setformula(s2, ss);
                     ex2->update_arbore();
                     ex2->update_literali();
                     txt[cur_window][1].setString(ex2->getformula());
+
                     this->draw(window);
 
 
@@ -526,19 +652,22 @@ void Menu::enter(sf::RenderWindow &window)
                         ss <<"Formulele nu sunt echivalente\n";
 
 
+                    cur_window = 4;
                     txt[cur_window][0].setString(ss.str());
-                    txt[cur_window][1].setString("");
+
+
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
 
                     this->draw(window);
+
                     break;
                 }
                 case 5:
                 {
                     ex = new FNN;
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
-                    ex->transformareFNN();
+                    ex->setformula(s, ss);
+                    ex->transformareFNN(ss);
                     ex->update_arbore();
                     txt[cur_window][0].setString(ex->getformula());
                     this->draw(window);
@@ -546,9 +675,15 @@ void Menu::enter(sf::RenderWindow &window)
                     ss <<'\n';
                     ss <<"Forma FNN a formulei este :" << ex->getformula()<<'\n';
 
+                    cur_window = 4;
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
+                     int f = string(txt[cur_window][0].getString()).size();
+                    f = 1ll * this->width * this->height / 100 /  f;
+
+                    txt[cur_line][0].setCharacterSize(f);
                     this->draw(window);
+
 
                     break;
                 }
@@ -556,8 +691,8 @@ void Menu::enter(sf::RenderWindow &window)
                 {
                     ex = new FND;
                    string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
-                    ex->transformare_in_FND();
+                    ex->setformula(s, ss);
+                    ex->transformare_in_FND(ss);
                     ex->update_arbore();
                     txt[cur_window][0].setString(ex->getformula());
                     this->draw(window);
@@ -565,17 +700,23 @@ void Menu::enter(sf::RenderWindow &window)
                     ss <<'\n';
                     ss <<"Forma FND a formulei este :" << ex->getformula()<<'\n';
 
+                    cur_window = 4;
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
+                     int f = string(txt[cur_window][0].getString()).size();
+                    f = 1ll * this->width * this->height / 100 /  f;
+
+                    txt[cur_line][0].setCharacterSize(f);
                     this->draw(window);
+
                     break;
                 }
                 case 7:
                 {
                     ex = new FNC;
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
-                    ex->transformare_in_FNC();
+                    ex->setformula(s, ss);
+                    ex->transformare_in_FNC(ss);
                     ex->update_arbore();
                     txt[cur_window][0].setString(ex->getformula());
                     this->draw(window);
@@ -583,9 +724,15 @@ void Menu::enter(sf::RenderWindow &window)
                     ss <<'\n';
                     ss <<"Forma FNC a formulei este :" << ex->getformula()<<'\n';
 
+                    cur_window = 4;
                     txt[cur_window][0].setString(ss.str());
                     txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
+                     int f = string(txt[cur_window][0].getString()).size();
+                    f = 1ll * this->width * this->height / 100 /  f;
+
+                    txt[cur_line][0].setCharacterSize(f);
                     this->draw(window);
+
                     break;
                 }
                 case 8:
@@ -593,14 +740,26 @@ void Menu::enter(sf::RenderWindow &window)
                     ex = new FNC;
 
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
-                    ex->transformare_in_FNC();
+                    ex->setformula(s, ss);
+                    ex->transformare_in_FNC(ss);
                     ex->update_arbore();
                     txt[cur_window][0].setString(ex->getformula());
+                     this->draw(window);
                     this->draw(window);
                     ex->update_literali();
                     ex->update_clauze();
-                    ex->rezolutie();
+                    ex->rezolutie(ss);
+                     cur_window  = 4;
+                      txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
+                    txt[cur_line][0].setString(ss.str());
+                     int f = string(txt[cur_window][0].getString()).size();
+                    f = 1ll * this->width * this->height / 100 /  f;
+
+
+                    txt[cur_line][0].setCharacterSize(f);
+                    this->draw(window);
+
+
                     break;
                 }
                 case 9:
@@ -608,14 +767,22 @@ void Menu::enter(sf::RenderWindow &window)
                     ex = new FNC;
 
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
-                    ex->transformare_in_FNC();
+                    ex->setformula(s, ss);
+                    ex->transformare_in_FNC(ss);
                     ex->update_arbore();
-                    txt[cur_window][0].setString(ex->getformula());
-                    this->draw(window);
+
                     ex->update_literali();
                     ex->update_clauze();
-                    ex->DP();
+                    ex->DP(ss);
+                     cur_window  = 4;
+                      txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
+                    txt[cur_line][0].setString(ss.str());
+                     int f = string(txt[cur_window][0].getString()).size();
+                    f = 1ll * this->width * this->height / 100 /  f;
+
+                    txt[cur_line][0].setCharacterSize(f);
+                    this->draw(window);
+
                     break;
                 }
                 case 10:
@@ -623,38 +790,30 @@ void Menu::enter(sf::RenderWindow &window)
                     ex = new FNC;
 
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s);
-                    ex->transformare_in_FNC();
+                    ex->setformula(s, ss);
+                    ex->transformare_in_FNC(ss);
                     ex->update_arbore();
                     txt[cur_window][0].setString(ex->getformula());
+
                     this->draw(window);
                     ex->update_literali();
                     ex->update_clauze();
-                    ex->DPLL();
+                    ex->DPLL(ss);
+                     cur_window  = 4;
+                      txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
+                    txt[cur_line][0].setString(ss.str());
+                     int f = string(txt[cur_window][0].getString()).size();
+                    f = 1ll * this->width * this->height / 100 /  f;
+
+                    txt[cur_line][0].setCharacterSize(f);
+                    this->draw(window);
+
 
                     break;
                 }
                 delete ex;
             }
 
-         while(window.isOpen())
-         {
-             sf::Event event;
-             while(window.pollEvent(event))
-                switch(event.type)
-                {
-                    case sf::Event::KeyPressed:
-                    {
-                        window.close();
-                        break;
-                    }
-                    case sf::Event::Closed:
-                    {
-                            window.close();
-                            break;
-                    }
-                }
-         }
 
         }
     }

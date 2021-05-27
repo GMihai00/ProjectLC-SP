@@ -5,14 +5,13 @@ FNN::FNN(string s, Arbore* a):Fprop(s, a)
 {
 
 }
-
-void FNN::transformareFNN()
+void FNN::transformareFNN(ostringstream& ss)
 {
     string forma_intermediara;
     forma_intermediara = this->formula;
-    forma_intermediara = reducere1(forma_intermediara);
-    forma_intermediara = reducere2(forma_intermediara);
-    forma_intermediara = De_Morgan(forma_intermediara);
+    forma_intermediara = reducere1(forma_intermediara, ss);
+    forma_intermediara = reducere2(forma_intermediara, ss);
+    forma_intermediara = De_Morgan(forma_intermediara, ss);
 
     this->formula = forma_intermediara;
 }

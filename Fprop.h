@@ -27,11 +27,11 @@ public:
     bool getvaliditate();
     bool getsatisfiabilitate();
     Arbore* getarbore();
-    virtual  void transformareFNN();
-    virtual  void transformare_in_FND();
-    virtual  void transformare_in_FNC();
+    virtual  void transformareFNN(ostringstream&);
+    virtual  void transformare_in_FND(ostringstream&);
+    virtual  void transformare_in_FNC(ostringstream&);
     // setare //
-    void setformula(string);
+    void setformula(string, ostream&);
     void setarbore(Arbore*);
 
     // operatii specifice //
@@ -54,10 +54,10 @@ public:
     virtual void update_clauze();
     virtual void build_formula_from_clauze();
 
-    virtual void rezolutie();
+    virtual void rezolutie(ostringstream&);
 
-    virtual void DP();
-    virtual void DPLL();
+    virtual void DP(ostringstream&);
+    virtual void DPLL(ostringstream&);
      static  int nr_formule_propozitionale; // initial 0, pt a tine evidenta mai bine , mai intai fa doar cu una //
 };
 

@@ -32,7 +32,7 @@ int op6(int x, int y)
     return x *y  + (1 - x) * (1 - y);
 }
 
-string transformare_structura_relaxata_in_structura_stricta(string c2, map <string,int> m)
+string transformare_structura_relaxata_in_structura_stricta(string c2, map <string,int> m, ostream& ss)
 {
     string dublicat;
 
@@ -151,7 +151,7 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
 
                 if(cntp!=0)
                 {
-                    cout << '\n' <<"Propozita nu este bine formata";
+                    ss << '\n' <<"Propozita nu este bine formata";
                     exit(0);
                 }
 
@@ -183,8 +183,8 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
 
                 if(cntp!=0)
                 {
-                    cout << '\n' <<"Propozita nu este bine formata";
-                    cout << '\n' <<".Numarul de paranteze deschise nu este egal cu nr de paranteze inchise";
+                    ss << '\n' <<"Propozita nu este bine formata";
+                    ss << '\n' <<".Numarul de paranteze deschise nu este egal cu nr de paranteze inchise";
                     exit(0);
                 }
 
@@ -210,8 +210,8 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
 
                 if(cntp!=0)
                 {
-                    cout << '\n' <<"Propozita nu este bine formata";
-                    cout << '\n' <<".Numarul de paranteze deschise nu este egal cu nr de paranteze inchise";
+                    ss << '\n' <<"Propozita nu este bine formata";
+                    ss << '\n' <<".Numarul de paranteze deschise nu este egal cu nr de paranteze inchise";
                     exit(0);
                 }
 
@@ -259,7 +259,7 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
         return dublicat;
 }
 
-string reducere1(string s)
+string reducere1(string s, ostream& ss)
 {
     string cpys;
 
@@ -334,15 +334,15 @@ string reducere1(string s)
 
         if(redus == false)
         {   if(cnt == 1)
-                cout << '\n' <<"Operatiile de reducere a implicatiei  efectuate sunt:\n";
-            cout << '\n' << cpys <<" echivalent cu "<< s<<'\n';
+                ss << '\n' <<"Operatiile de reducere a implicatiei  efectuate sunt:\n";
+            ss << '\n' << cpys <<" echivalent cu "<< s<<'\n';
         }
     }
 
     return s;
 }
 
-string reducere2(string s)
+string reducere2(string s, ostream& ss)
 {
     string cpys;
 
@@ -446,8 +446,8 @@ string reducere2(string s)
         }
         if(redus == false)
         {    if(cnt == 1)
-                cout << '\n' <<"Operatiile de reducere a echivalentei  efectuate sunt:\n";
-            cout << '\n' << cpys <<" echivalent cu "<< s<<'\n';
+                ss << '\n' <<"Operatiile de reducere a echivalentei  efectuate sunt:\n";
+            ss << '\n' << cpys <<" echivalent cu "<< s<<'\n';
         }
     }
 
@@ -455,7 +455,7 @@ string reducere2(string s)
 
 }
 
-string De_Morgan(string s)
+string De_Morgan(string s, ostream& ss)
 {
     string cpys;
 
@@ -549,8 +549,8 @@ string De_Morgan(string s)
         }
         if(redus == false)
         {    if(cnt == 1)
-                cout << '\n' <<"Operatiile de tip De Morgan efectuate sunt:\n";
-            cout << '\n' << cpys <<" echivalent cu "<< s<<'\n';
+               ss << '\n' <<"Operatiile de tip De Morgan efectuate sunt:\n";
+            ss << '\n' << cpys <<" echivalent cu "<< s<<'\n';
         }
     }
     return s;
@@ -622,18 +622,18 @@ pair <int,int> conector_semnificiativ2(string s)
 }
 
 
-string distributivitate1(string s)
+string distributivitate1(string s, ostream& ss)
 {
 
-    cout << '\n' <<"Formula curenta este:" << s<<'\n';
+    ss << '\n' <<"Formula curenta este:" << s<<'\n';
     pair <int,int> p = conector_semnificiativ(s);
     int nrsi = p.first;
     int p_conector = p.second;
     if(p_conector!= -1)
-        cout << '\n' <<"Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:" << s[p_conector] <<'\n';
+        ss << '\n' <<"Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:" << s[p_conector] <<'\n';
     if(nrsi == 0)
     {
-        cout << '\n' <<"Formula curenta este in FNC deoarece contine conectori de un singur tip"<<'\n';
+        ss << '\n' <<"Formula curenta este in FNC deoarece contine conectori de un singur tip"<<'\n';
         return s;
     }
 
@@ -681,23 +681,23 @@ string distributivitate1(string s)
     for(int i = st; i < p_conector; i++)
         formulast.push_back(s[i]);
 
-    cout << '\n' <<"Formula din stanga conectorului cel mai semnificativ este:" << formulast << '\n';
+    ss << '\n' <<"Formula din stanga conectorului cel mai semnificativ este:" << formulast << '\n';
 
     for(int i = p_conector + 1; i <= dr; i++)
         formuladr.push_back(s[i]);
 
-    cout << '\n' <<"Formula din dreapta conectorului cel mai semnificativ este:" << formuladr << '\n';
+    ss << '\n' <<"Formula din dreapta conectorului cel mai semnificativ este:" << formuladr << '\n';
 
     if(s[p_conector] == '&')
     {
-        cout << '\n' <<"Conectorul cel mai semnificativ este & deci va trebui sa verific doar daca formula din stanga si din dreapta sunt sub forma de FNC" <<'\n';
-        return("(" + distributivitate1(formulast) + s[p_conector] + distributivitate1(formuladr) + ")");
+        ss << '\n' <<"Conectorul cel mai semnificativ este & deci va trebui sa verific doar daca formula din stanga si din dreapta sunt sub forma de FNC" <<'\n';
+        return("(" + distributivitate1(formulast, ss) + s[p_conector] + distributivitate1(formuladr, ss) + ")");
     }
     else
     {
 
 
-        cout << '\n' <<"Conectorul cel mai semnificativ este | deci va trebui sa aplic distributivitatea si eventual asociativitatea si comutativitatea dintre doi literali conectati de un conector" <<'\n';
+       ss << '\n' <<"Conectorul cel mai semnificativ este | deci va trebui sa aplic distributivitatea si eventual asociativitatea si comutativitatea dintre doi literali conectati de un conector" <<'\n';
 
         string formulanoua;
         pair <int,int> pst = conector_semnificiativ(formulast);
@@ -718,7 +718,7 @@ string distributivitate1(string s)
             pst_conector = pst.second;
 
             if(pst_conector!= -1)
-                cout << '\n' <<"Am determinat cel mai semnificativ conector al propozitie din stanga acesta fiind:" << formulast[pst_conector] <<'\n';
+                ss << '\n' <<"Am determinat cel mai semnificativ conector al propozitie din stanga acesta fiind:" << formulast[pst_conector] <<'\n';
 
             int stst;
             int cntpst = 0;
@@ -764,10 +764,10 @@ string distributivitate1(string s)
             for(int i = stst; i < pst_conector; i++)
                 formulastv2.push_back(formulast[i]);
 
-            cout << '\n' <<"Formula din stanga celui mai semnificativ semn al formulei din stanga este:" << formulastv2 <<'\n';
+            ss << '\n' <<"Formula din stanga celui mai semnificativ semn al formulei din stanga este:" << formulastv2 <<'\n';
             for(int i = pst_conector + 1; i <= drst; i++)
                 formuladrv2.push_back(formulast[i]);
-            cout << '\n' <<"Formula din dreapta celui mai semnificativ semn al formulei din stanga este:" << formuladrv2 <<'\n';
+            ss << '\n' <<"Formula din dreapta celui mai semnificativ semn al formulei din stanga este:" << formuladrv2 <<'\n';
 
 
             pair <int,int> pst2 = conector_semnificiativ(formulast);
@@ -785,31 +785,31 @@ string distributivitate1(string s)
             if(formulast[pst_conector] == '|')
             {
                 formulanoua =  formulastv2  + "|(" + formuladrv2 + "|" + formuladr + ")";
-                cout << '\n' << "Am aplicat asociativitate fata de conectorul | si am obtinut:" << formulanoua <<'\n';
+                ss << '\n' << "Am aplicat asociativitate fata de conectorul | si am obtinut:" << formulanoua <<'\n';
             }
             else
             {
                 formulanoua = "(" + formulastv2 + "|" + formuladr +  ")&(" + formuladrv2 + "|" + formuladr + ")";
-                cout << '\n' << "Am aplicat distributivitatea conectorului & fata de conectorul | si am obtinut:" << formulanoua <<'\n';
+                ss << '\n' << "Am aplicat distributivitatea conectorului & fata de conectorul | si am obtinut:" << formulanoua <<'\n';
             }
 
-        return(distributivitate1("(" + formulanoua + ")"));
+        return(distributivitate1("(" + formulanoua + ")", ss));
 
 
     }
 
 }
 
-string distributivitate2(string s)
+string distributivitate2(string s, ostream& ss)
 {
-    cout << '\n' <<"Formula curenta este:" << s<<'\n';
+    ss << '\n' <<"Formula curenta este:" << s<<'\n';
     pair <int,int> p = conector_semnificiativ2(s);
     int nrsi = p.first;
     int p_conector = p.second;
     if(p_conector!= -1)
-        cout << '\n' <<"Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:" << s[p_conector] <<'\n';
+        ss << '\n' <<"Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:" << s[p_conector] <<'\n';
     if(nrsi == 0)
-    {   cout << '\n' <<"Formula curenta este in FNC deoarece contine conectori de un singur tip"<<'\n';
+    {   ss << '\n' <<"Formula curenta este in FNC deoarece contine conectori de un singur tip"<<'\n';
         return s;
 
     }
@@ -858,28 +858,28 @@ string distributivitate2(string s)
     for(int i = st; i < p_conector; i++)
         formulast.push_back(s[i]);
 
-    cout << '\n' <<"Formula din stanga conectorului cel mai semnificativ este:" << formulast << '\n';
+    ss << '\n' <<"Formula din stanga conectorului cel mai semnificativ este:" << formulast << '\n';
     for(int i = p_conector + 1; i <= dr; i++)
         formuladr.push_back(s[i]);
 
-    cout << '\n' <<"Formula din dreapta conectorului cel mai semnificativ este:" << formuladr << '\n';
+    ss << '\n' <<"Formula din dreapta conectorului cel mai semnificativ este:" << formuladr << '\n';
 
     if(s[p_conector] == '|')
     {
-        cout << '\n' <<"Conectorul cel mai semnificativ este | deci va trebui sa verific doar daca formula din stanga si din dreapta sunt sub forma de FND" <<'\n';
-        return("(" + distributivitate2(formulast) + s[p_conector] + distributivitate2(formuladr) + ")");
+        ss << '\n' <<"Conectorul cel mai semnificativ este | deci va trebui sa verific doar daca formula din stanga si din dreapta sunt sub forma de FND" <<'\n';
+        return("(" + distributivitate2(formulast, ss) + s[p_conector] + distributivitate2(formuladr, ss) + ")");
     }
     else
     {
 
-        cout << '\n' <<"Conectorul cel mai semnificativ este & deci va trebui sa aplic distributivitatea si eventual asociativitatea si comutativitatea dintre doi literali conectati de un conector" <<'\n';
+        ss << '\n' <<"Conectorul cel mai semnificativ este & deci va trebui sa aplic distributivitatea si eventual asociativitatea si comutativitatea dintre doi literali conectati de un conector" <<'\n';
 
         string formulanoua;
         pair <int,int> pst = conector_semnificiativ2(formulast);
         int nrsist = pst.first;
         int pst_conector = pst.second;
         if(pst_conector!= -1)
-            cout << '\n' <<"Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:" << formulast[pst_conector] <<'\n';
+            ss << '\n' <<"Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:" << formulast[pst_conector] <<'\n';
         if(nrsist == 0)
         {
             string cpyformula;
@@ -935,12 +935,12 @@ string distributivitate2(string s)
             for(int i = stst; i < pst_conector; i++)
                 formulastv2.push_back(formulast[i]);
 
-            cout << '\n' <<"Formula din stanga celui mai semnificativ semn al formulei din stanga este:" << formulastv2 <<'\n';
+            ss << '\n' <<"Formula din stanga celui mai semnificativ semn al formulei din stanga este:" << formulastv2 <<'\n';
 
             for(int i = pst_conector + 1; i <= drst; i++)
                 formuladrv2.push_back(formulast[i]);
 
-            cout << '\n' <<"Formula din dreapta celui mai semnificativ semn al formulei din stanga este:" << formuladrv2 <<'\n';
+            ss << '\n' <<"Formula din dreapta celui mai semnificativ semn al formulei din stanga este:" << formuladrv2 <<'\n';
 
             pair <int,int> pst2 = conector_semnificiativ(formulast);
             int nrsist2 = pst2.first;
@@ -957,15 +957,15 @@ string distributivitate2(string s)
             if(formulast[pst_conector] == '&')
             {
                 formulanoua =  formulastv2  + "&(" + formuladrv2 + "&" + formuladr + ")";
-                cout << '\n' << "Am aplicat asociativitate fata de conectorul & si am obtinut:" << formulanoua <<'\n';
+                ss << '\n' << "Am aplicat asociativitate fata de conectorul & si am obtinut:" << formulanoua <<'\n';
             }
             else
             {
                 formulanoua = "(" + formulastv2 + "&" + formuladr +  ")|(" + formuladrv2 + "&" + formuladr + ")";
-                cout << '\n' << "Am aplicat distributivitatea conectorului | fata de conectorul & si am obtinut:" << formulanoua <<'\n';
+                ss  << '\n' << "Am aplicat distributivitatea conectorului | fata de conectorul & si am obtinut:" << formulanoua <<'\n';
             }
 
-        return(distributivitate2("(" + formulanoua + ")"));
+        return(distributivitate2("(" + formulanoua + ")", ss));
 
 
     }
@@ -973,7 +973,7 @@ string distributivitate2(string s)
 
 }
 
-void combina_clauzele(set < set <string> > &set_clauze)
+void combina_clauzele(set < set <string> > &set_clauze, ostream& ss)
 {
 
     vector < set <string> > lista_clauze;
@@ -1029,32 +1029,32 @@ void combina_clauzele(set < set <string> > &set_clauze)
 
                     if(set2.size() == 0)
                     {
-                        cout << '\n' <<"Combinand clauza ";
+                        ss << '\n' <<"Combinand clauza ";
                         set <string>::iterator it;
                         it = lista_clauze[i].begin();
-                        cout <<"{";
+                        ss <<"{";
                         while(it != lista_clauze[i].end())
                         {
-                            cout << *it;
+                            ss << *it;
                             it++;
                             if(it != lista_clauze[i].end())
-                                cout <<",";
+                                ss <<",";
 
                         }
-                        cout <<"} cu clauza ";
-                        cout <<"{";
+                        ss <<"} cu clauza ";
+                        ss <<"{";
                         it = lista_clauze[j].begin();
                         while(it != lista_clauze[j].end())
                         {
-                            cout << *it;
+                            ss << *it;
                             it++;
                             if(it != lista_clauze[j].end())
-                                cout <<",";
+                                ss <<",";
 
                         }
-                        cout <<"} am obtinut clauza {}" <<'\n';
+                        ss <<"} am obtinut clauza {}" <<'\n';
 
-                        cout << '\n' <<"Propozitia este nesatisfiabila";
+                        ss << '\n' <<"Propozitia este nesatisfiabila";
 
                         set <string> a;
                         a.insert("eroare");
@@ -1065,41 +1065,41 @@ void combina_clauzele(set < set <string> > &set_clauze)
 
                     if(set_clauze.find(set2) == set_clauze.end())
                     {
-                        cout << '\n' <<"Combinand clauza ";
+                        ss << '\n' <<"Combinand clauza ";
                         set <string>::iterator it;
                         it = lista_clauze[i].begin();
-                        cout <<"{";
+                       ss <<"{";
                         while(it != lista_clauze[i].end())
                         {
-                            cout << *it;
+                            ss   << *it;
                             it++;
                             if(it != lista_clauze[i].end())
-                                cout <<",";
+                               ss <<",";
 
                         }
-                        cout <<"} cu clauza ";
-                        cout <<"{";
+                        ss <<"} cu clauza ";
+                        ss <<"{";
                         it = lista_clauze[j].begin();
                         while(it != lista_clauze[j].end())
                         {
-                            cout << *it;
+                            ss << *it;
                             it++;
                             if(it != lista_clauze[j].end())
-                                cout <<",";
+                                ss <<",";
 
                         }
-                        cout <<"} am obtinut clauza ";
-                        cout <<"{";
+                        ss <<"} am obtinut clauza ";
+                        ss <<"{";
                         it = set2.begin();
                         while(it != set2.end())
                         {
-                            cout << *it;
+                            ss << *it;
                             it++;
                             if(it != set2.end())
-                                cout <<",";
+                                ss <<",";
 
                         }
-                        cout <<"}\n";
+                        ss <<"}\n";
 
                         set_clauze.insert(set2);
                         lista_clauze.push_back(set2);
@@ -1121,11 +1121,11 @@ void combina_clauzele(set < set <string> > &set_clauze)
                             if(set_clauze.find(set3) != set_clauze.end())
                             {
                                 string l_pc = *set2.begin();
-                                cout << '\n' <<"Combinand clauza {";
-                                cout << l_pc <<"} cu clauza ";
-                                cout << "{" << l_c <<"} am obtinut clauza {}" <<'\n';
+                                ss << '\n' <<"Combinand clauza {";
+                                ss << l_pc <<"} cu clauza ";
+                                ss << "{" << l_c <<"} am obtinut clauza {}" <<'\n';
 
-                                cout << '\n' <<"Propozitia este nesatisfiabila";
+                                ss << '\n' <<"Propozitia este nesatisfiabila";
                                 set <string> a;
                                 a.insert("eroare");
                                 set_clauze.insert(a);
@@ -1167,7 +1167,7 @@ set <string> get_literali_cu_negatie(string s)
 }
 
 
-void regula_clauzei_cu_un_literar(set < set <string> > &set_clauze,int &modif,set <string> &set_literali_cu_negatie, int& ok)
+void regula_clauzei_cu_un_literar(set < set <string> > &set_clauze,int &modif,set <string> &set_literali_cu_negatie, int& ok, ostream& ss)
 {
     modif = 0;
     int nrop = 0;
@@ -1188,7 +1188,7 @@ void regula_clauzei_cu_un_literar(set < set <string> > &set_clauze,int &modif,se
             okd = false;
             nrop++;
             string s2 = *set2.begin();
-            cout <<'\n'<< "Aplicand regula clauzei cu un literal pentru literalul " << s2 <<" am obtinut setul nou de clauze ";
+            ss <<'\n'<< "Aplicand regula clauzei cu un literal pentru literalul " << s2 <<" am obtinut setul nou de clauze ";
             string complementar;
 
             if(s2[0] == '!')
@@ -1226,7 +1226,7 @@ void regula_clauzei_cu_un_literar(set < set <string> > &set_clauze,int &modif,se
                 }
                 if(set3.size() == 0)
                 {
-                    cout << '\n' <<"Formula nu este satisfiabila";
+                    ss << '\n' <<"Formula nu este satisfiabila";
                     ok = 0;
                     return;
                 }
@@ -1247,31 +1247,31 @@ void regula_clauzei_cu_un_literar(set < set <string> > &set_clauze,int &modif,se
                 set_clauze.insert(toadd[i]);
             }
 
-            cout <<"{";
+            ss <<"{";
             set < set <string> >:: iterator it4 = set_clauze.begin();
             while(it4!=set_clauze.end())
             {
                 set <string> p = *it4;
-               cout <<"{";
+               ss <<"{";
                 set <string> ::iterator it2 = p.begin();
                 while(it2 != p.end())
                 {
-                    cout << *it2;
+                    ss << *it2;
                     it2++;
                     if(it2 != p.end())
-                        cout <<",";
+                        ss <<",";
                 }
-                cout <<"}";
+                ss <<"}";
                 it4++;
                 if(it4 != set_clauze.end())
-                cout <<",";
+                ss <<",";
             }
-            cout <<"}";
-            cout <<'\n';
+            ss <<"}";
+            ss <<'\n';
 
             if(set_clauze.size() == 0)
             {
-                cout << '\n' <<"Formula este satisfiabila";
+                ss << '\n' <<"Formula este satisfiabila";
                 ok = 1;
                 return;
             }
@@ -1287,7 +1287,7 @@ void regula_clauzei_cu_un_literar(set < set <string> > &set_clauze,int &modif,se
 
     if(set_clauze.size() == 0)
     {
-        cout << '\n' <<"Formula este satisfiabila";
+        ss << '\n' <<"Formula este satisfiabila";
         ok = 1;
         return;
     }
@@ -1296,7 +1296,7 @@ void regula_clauzei_cu_un_literar(set < set <string> > &set_clauze,int &modif,se
     if(nrop != 0 )
     {
         modif = 1;
-        cout <<'\n'<<'\n';
+        ss <<'\n'<<'\n';
     }
     else
     {
@@ -1305,7 +1305,7 @@ void regula_clauzei_cu_un_literar(set < set <string> > &set_clauze,int &modif,se
 
 }
 
-void regula_literalului_pur(set < set <string> > &set_clauze,int &modif,set <string> &set_literali_cu_negatie, int&ok)
+void regula_literalului_pur(set < set <string> > &set_clauze,int &modif,set <string> &set_literali_cu_negatie, int&ok, ostream& ss)
 {
     int nrop = 0;
 
@@ -1325,7 +1325,7 @@ void regula_literalului_pur(set < set <string> > &set_clauze,int &modif,set <str
 
         if(set_literali_cu_negatie.find(complementar) == set_literali_cu_negatie.end())
         {
-            cout <<"Aplicand regula literalului pur pentru literalul " << f <<" obtinem setul de clauze ";
+            ss <<"Aplicand regula literalului pur pentru literalul " << f <<" obtinem setul de clauze ";
             nrop++;
             vector < set <string> > eliminare;
 
@@ -1339,35 +1339,35 @@ void regula_literalului_pur(set < set <string> > &set_clauze,int &modif,set <str
                 set_clauze.erase(eliminare[i]);
 
             set_literali_cu_negatie.clear();
-            cout <<"{";
+            ss <<"{";
             set < set <string> >:: iterator it4 = set_clauze.begin();
             while(it4!=set_clauze.end())
             {
                 set <string> p = *it4;
-                cout <<"{";
+                ss <<"{";
                 set <string> ::iterator it2 = p.begin();
                 while(it2 != p.end())
                 {
                     string f2 = *it2;
                     set_literali_cu_negatie.insert(f2);
-                    cout << *it2;
+                    ss << *it2;
                     it2++;
                     if(it2 != p.end())
-                        cout <<",";
+                        ss <<",";
                 }
-                cout <<"}";
+                ss <<"}";
                 it4++;
                 if(it4 != set_clauze.end())
-                cout <<",";
+                ss <<",";
             }
-            cout <<"}";
-            cout <<'\n';
+            ss <<"}";
+            ss <<'\n';
 
             it = set_literali_cu_negatie.begin();
 
             if(set_clauze.size() == 0)
             {
-                cout << '\n' <<"Formula este satisfiabila";
+                ss << '\n' <<"Formula este satisfiabila";
                 ok = 1;
                 return;
             }
@@ -1384,29 +1384,29 @@ void regula_literalului_pur(set < set <string> > &set_clauze,int &modif,set <str
     else
         {
             modif = 1;
-            cout <<'\n'<<'\n';
+            ss <<'\n'<<'\n';
         }
 }
 
 
 
-void aplica_regula_1_si_2(set < set < string> > &set_clauze ,set <string> &set_literali_cu_negatie,int &modif2, int& ok)
+void aplica_regula_1_si_2(set < set < string> > &set_clauze ,set <string> &set_literali_cu_negatie,int &modif2, int& ok, ostream&ss)
 {
     int modif = 1;
 
     while(modif != 0)
     {
-            regula_clauzei_cu_un_literar(set_clauze,modif,set_literali_cu_negatie, ok);
+            regula_clauzei_cu_un_literar(set_clauze,modif,set_literali_cu_negatie, ok, ss);
             if(modif != 0)
                 modif2 = 1;
-            regula_literalului_pur(set_clauze,modif,set_literali_cu_negatie, ok);
+            regula_literalului_pur(set_clauze,modif,set_literali_cu_negatie, ok, ss);
 
             if(modif != 0)
                 modif2 = 1;
     }
 }
 
-void combina_clauzele2(set < set < string> > set_clauze ,set <string> set_literali_cu_negatie, int &ok)
+void combina_clauzele2(set < set < string> > set_clauze ,set <string> set_literali_cu_negatie, int &ok, ostream& ss)
 {
 
     vector < set <string> > lista_clauze;
@@ -1424,7 +1424,7 @@ void combina_clauzele2(set < set < string> > set_clauze ,set <string> set_litera
         {
 
             int modif2 = 0;
-            aplica_regula_1_si_2(set_clauze,set_literali_cu_negatie,modif2, ok);
+            aplica_regula_1_si_2(set_clauze,set_literali_cu_negatie,modif2, ok, ss);
             if(modif2 == 1)
             {
                 if(set_clauze.size() == 0)
@@ -1486,76 +1486,76 @@ void combina_clauzele2(set < set < string> > set_clauze ,set <string> set_litera
 
                     if(set2.size() == 0)
                     {
-                        cout <<"Combinand clauza ";
+                        ss <<"Combinand clauza ";
 
                         set <string>::iterator it5;
                         it5 = set_1.begin();
-                        cout <<"{";
+                        ss <<"{";
                         while(it5 != set_1.end())
                         {
-                            cout << *it5;
+                            ss << *it5;
                             it5++;
                             if(it5 != set_1.end())
-                                cout <<",";
+                                ss <<",";
                         }
-                        cout <<"}";
-                        cout <<" cu clauza ";
+                        ss <<"}";
+                        ss <<" cu clauza ";
                         it5 = set_2.begin();
-                        cout <<"{";
+                        ss <<"{";
                         while(it5 != set_2.end())
                         {
-                            cout << *it5;
+                            ss << *it5;
                             it5++;
                             if(it5 != set_2.end())
-                                cout <<",";
+                                ss <<",";
                         }
-                        cout <<"}";
-                        cout <<" am obtinut setul de clauza ";
+                        ss <<"}";
+                        ss <<" am obtinut setul de clauza ";
 
-                        cout <<"{}";
+                        ss <<"{}";
 
-                        cout << '\n' <<"Propozitia este nesatisfiabila";
+                        ss << '\n' <<"Propozitia este nesatisfiabila";
                          ok = 0;
                          return;
                     }
 
                     if(set_clauze.find(set2) == set_clauze.end())
                     {
-                        cout <<"Combinand clauza ";
+                        ss <<"Combinand clauza ";
 
                         set <string>::iterator it5;
                         it5 = set_1.begin();
-                        cout <<"{";
+                        ss <<"{";
                         while(it5 != set_1.end())
                         {
-                            cout << *it5;
+                            ss << *it5;
                             it5++;
                             if(it5 != set_1.end())
-                                cout <<",";
+                                ss <<",";
                         }
-                        cout <<"}";
-                        cout <<" cu clauza ";
+                        ss <<"}";
+                        ss <<" cu clauza ";
                         it5 = set_2.begin();
-                        cout <<"{";
+                        ss <<"{";
                         while(it5 != set_2.end())
                         {
-                            cout << *it5;
+                            ss << *it5;
                             it5++;
                             if(it5 != set_2.end())
-                                cout <<",";
+                                ss <<",";
                         }
-                        cout <<"}";
-                        cout <<" am obtinut setul de clauza ";
+                        ss <<"}";
+                        ss <<" am obtinut setul de clauza ";
                         it5 = set2.begin();
-                        cout <<"{";
+                        ss <<"{";
                         while(it5 != set2.end())
                         {
-                            cout << *it5;
+                            ss << *it5;
                             it5++;
                             if(it5 != set2.end())
-                                cout <<",";
+                                ss <<",";
                         }
-                        cout <<"}\n";
+                        ss <<"}\n";
 
                         set_clauze.insert(set2);
                         lista_clauze.push_back(set2);
@@ -1576,8 +1576,8 @@ void combina_clauzele2(set < set < string> > set_clauze ,set <string> set_litera
 
                             if(set_clauze.find(set3) != set_clauze.end())
                             {
-                                cout <<"Combinand clauza {" << *set2.begin() << "} cu clauza {" << *set3.begin() <<"} am obtinut clauza {}";
-                                cout << '\n' <<"Propozitia este nesatisfiabila";
+                                ss <<"Combinand clauza {" << *set2.begin() << "} cu clauza {" << *set3.begin() <<"} am obtinut clauza {}";
+                                ss << '\n' <<"Propozitia este nesatisfiabila";
                                 ok = 0;
                                 return;
                             }
@@ -1596,14 +1596,14 @@ void combina_clauzele2(set < set < string> > set_clauze ,set <string> set_litera
 
 
 
-void rezolutie_propozitionala2(set < set < string> > set_clauze ,set <string> set_literali_cu_negatie, int &ok)
+void rezolutie_propozitionala2(set < set < string> > set_clauze ,set <string> set_literali_cu_negatie, int &ok, ostream& ss)
 {
-    combina_clauzele2(set_clauze,set_literali_cu_negatie, ok);
+    combina_clauzele2(set_clauze,set_literali_cu_negatie, ok, ss);
     if(ok == 1)
-        cout << '\n' <<"Formula este satisfiabila";
+        ss << '\n' <<"Formula este satisfiabila";
 }
 
-void regula_clauzei_cu_un_literar2(set < set <string> > &set_clauze,int &modif,set <string> &set_literali_cu_negatie, int&ok)
+void regula_clauzei_cu_un_literar2(set < set <string> > &set_clauze,int &modif,set <string> &set_literali_cu_negatie, int&ok, ostream& ss)
 {
     modif = 1;
     int nrop = 0;
@@ -1623,7 +1623,7 @@ void regula_clauzei_cu_un_literar2(set < set <string> > &set_clauze,int &modif,s
             okd = false;
             nrop++;
             string s2 = *set2.begin();
-            cout <<'\n'<< "Aplicand regula clauzei cu un literal pentru literalul " << s2 <<" am obtinut setul nou de clauze ";
+            ss <<'\n'<< "Aplicand regula clauzei cu un literal pentru literalul " << s2 <<" am obtinut setul nou de clauze ";
 
             string complementar;
 
@@ -1681,32 +1681,32 @@ void regula_clauzei_cu_un_literar2(set < set <string> > &set_clauze,int &modif,s
             set_clauze.insert(toadd[i]);
         }
 
-        cout <<"{";
+        ss <<"{";
         set < set <string> >:: iterator it4 = set_clauze.begin();
         while(it4!=set_clauze.end())
         {
             set <string> p = *it4;
-            cout <<"{";
+            ss <<"{";
             set <string> ::iterator it2 = p.begin();
             while(it2 != p.end())
             {
-                cout << *it2;
+                ss << *it2;
                 it2++;
                 if(it2 != p.end())
-                    cout <<",";
+                    ss <<",";
             }
-            cout <<"}";
+            ss <<"}";
             it4++;
             if(it4 != set_clauze.end())
-            cout <<",";
+            ss <<",";
         }
-        cout <<"}";
-        cout <<'\n';
+        ss <<"}";
+        ss <<'\n';
 
         if(set_clauze.size() == 0)
         {
-                cout <<"Pe una dintre ramurile DPLL s-a obtinut setul de clauze {}\n";
-                cout << '\n' <<"Formula este satisfiabila";
+                ss <<"Pe una dintre ramurile DPLL s-a obtinut setul de clauze {}\n";
+                ss << '\n' <<"Formula este satisfiabila";
                 ok = 1;
                 return;
         }
@@ -1722,8 +1722,8 @@ void regula_clauzei_cu_un_literar2(set < set <string> > &set_clauze,int &modif,s
 
     if(set_clauze.size() == 0)
     {
-        cout <<"Pe una dintre ramurile DPLL s-a obtinut setul de clauze {}\n";
-        cout << '\n' <<"Formula este satisfiabila";
+        ss <<"Pe una dintre ramurile DPLL s-a obtinut setul de clauze {}\n";
+        ss << '\n' <<"Formula este satisfiabila";
         ok = 1;
         return;
     }
@@ -1732,7 +1732,7 @@ void regula_clauzei_cu_un_literar2(set < set <string> > &set_clauze,int &modif,s
     if(nrop != 0 && modif != 2)
     {
         modif = 1;
-        cout <<'\n';
+        ss <<'\n';
     }
     else
     if(modif != 2)
@@ -1743,7 +1743,7 @@ void regula_clauzei_cu_un_literar2(set < set <string> > &set_clauze,int &modif,s
 
 }
 
-void regula_literalului_pur2(set < set <string> > &set_clauze,int &modif,set <string> &set_literali_cu_negatie, int &ok )
+void regula_literalului_pur2(set < set <string> > &set_clauze,int &modif,set <string> &set_literali_cu_negatie, int &ok, ostream& ss)
 {
 
     int nrop = 0;
@@ -1766,7 +1766,7 @@ void regula_literalului_pur2(set < set <string> > &set_clauze,int &modif,set <st
 
         if(set_literali_cu_negatie.find(complementar) == set_literali_cu_negatie.end())
         {
-            cout <<"Aplicand regula literalului pur " << f <<" am obtinut setul de clauze ";
+            ss <<"Aplicand regula literalului pur " << f <<" am obtinut setul de clauze ";
             nrop++;
 
             vector < set <string> > eliminare;
@@ -1783,29 +1783,29 @@ void regula_literalului_pur2(set < set <string> > &set_clauze,int &modif,set <st
             for(int i = 0; i < eliminare.size(); i++)
                 set_clauze.erase(eliminare[i]);
 
-            cout <<"{";
+            ss <<"{";
             set < set <string> >:: iterator it4 = set_clauze.begin();
             while(it4!=set_clauze.end())
             {
                 set <string> p = *it4;
-                cout <<"{";
+                ss <<"{";
                 set <string> ::iterator it2 = p.begin();
                 while(it2 != p.end())
                 {
                     string f2 = *it2;
                     set_literali_cu_negatie.insert(f2);
-                    cout << *it2;
+                    ss << *it2;
                     it2++;
                     if(it2 != p.end())
-                        cout <<",";
+                        ss <<",";
                 }
-                cout <<"}";
+                ss <<"}";
                 it4++;
                 if(it4 != set_clauze.end())
-                cout <<",";
+                ss <<",";
             }
-            cout <<"}";
-            cout <<'\n';
+            ss <<"}";
+            ss <<'\n';
 
             it = set_literali_cu_negatie.begin();
 
@@ -1818,8 +1818,8 @@ void regula_literalului_pur2(set < set <string> > &set_clauze,int &modif,set <st
 
     if(set_clauze.size() == 0)
     {
-        cout <<"Pe una dintre ramurile DPLL s-a obtinut setul de clauze {}\n";
-        cout << '\n' <<"Formula este satisfiabila";
+        ss <<"Pe una dintre ramurile DPLL s-a obtinut setul de clauze {}\n";
+        ss << '\n' <<"Formula este satisfiabila";
         ok = 1;
         return;
     }
@@ -1829,13 +1829,13 @@ void regula_literalului_pur2(set < set <string> > &set_clauze,int &modif,set <st
     else
         {
             modif = 1;
-            cout <<'\n';
+            ss <<'\n';
         }
 
 }
 
 
-void aplica_regula_1_si_2_2(set < set < string> > &set_clauze ,set <string> &set_literali_cu_negatie,int &modif2, int &ok)
+void aplica_regula_1_si_2_2(set < set < string> > &set_clauze ,set <string> &set_literali_cu_negatie,int &modif2, int &ok, ostream&ss)
 {
     int modif = 1;
     modif2 = 1;
@@ -1843,7 +1843,7 @@ void aplica_regula_1_si_2_2(set < set < string> > &set_clauze ,set <string> &set
 
     while(modif != 0)
     {
-        regula_clauzei_cu_un_literar2(set_clauze,modif,set_literali_cu_negatie, ok);
+        regula_clauzei_cu_un_literar2(set_clauze,modif,set_literali_cu_negatie, ok, ss);
 
 
         if(modif == 2)
@@ -1852,7 +1852,7 @@ void aplica_regula_1_si_2_2(set < set < string> > &set_clauze ,set <string> &set
             modif2 = 0;
         }
         else
-            regula_literalului_pur2(set_clauze,modif,set_literali_cu_negatie, ok);
+            regula_literalului_pur2(set_clauze,modif,set_literali_cu_negatie, ok, ss);
 
 
     }
@@ -1860,34 +1860,34 @@ void aplica_regula_1_si_2_2(set < set < string> > &set_clauze ,set <string> &set
 }
 
 
-void impartire_dupa_literali(set <string> set_literali_cu_negatie, set < set <string> > set_clauze, int &ok)
+void impartire_dupa_literali(set <string> set_literali_cu_negatie, set < set <string> > set_clauze, int &ok, ostream& ss)
 {
 
     if(ok != -1)
         return;
 
-    cout <<"Setul curent de clauze este:";
-    cout <<"{";
+    ss <<"Setul curent de clauze este:";
+    ss <<"{";
     set < set <string> >:: iterator it4 = set_clauze.begin();
     while(it4!=set_clauze.end())
     {
         set <string> p = *it4;
-        cout <<"{";
+        ss <<"{";
         set <string> ::iterator it2 = p.begin();
         while(it2 != p.end())
         {
-            cout << *it2;
+            ss << *it2;
             it2++;
             if(it2 != p.end())
-                cout <<",";
+                ss <<",";
         }
-        cout <<"}";
+        ss <<"}";
         it4++;
         if(it4 != set_clauze.end())
-            cout <<",";
+            ss <<",";
     }
-    cout <<"}";
-    cout <<'\n';
+    ss <<"}";
+    ss <<'\n';
 
     set <string> set_literali_cu_negatie1 = set_literali_cu_negatie;
     set < set <string> > set_clauze1 = set_clauze;
@@ -1898,7 +1898,7 @@ void impartire_dupa_literali(set <string> set_literali_cu_negatie, set < set <st
     string literal = *it;
 
 
-    cout <<"Se aplica regula de impartire dupa literalul " << literal << " obtinanduse noile seturi de clauze: ";
+    ss <<"Se aplica regula de impartire dupa literalul " << literal << " obtinanduse noile seturi de clauze: ";
 
     string complementar;
 
@@ -1914,73 +1914,73 @@ void impartire_dupa_literali(set <string> set_literali_cu_negatie, set < set <st
     set_clauze2.insert(f);
     int modif2;
 
-    cout <<"{";
+    ss <<"{";
     it4 = set_clauze2.begin();
     while(it4!=set_clauze2.end())
     {
         set <string> p = *it4;
-        cout <<"{";
+        ss <<"{";
         set <string> ::iterator it2 = p.begin();
         while(it2 != p.end())
         {
-            cout << *it2;
+            ss << *it2;
             it2++;
             if(it2 != p.end())
-                cout <<",";
+                ss <<",";
         }
-        cout <<"}";
+        ss <<"}";
         it4++;
         if(it4 != set_clauze2.end())
-            cout <<",";
+            ss <<",";
     }
-    cout <<"}";
-    cout <<" si ";
+    ss <<"}";
+    ss <<" si ";
 
     f.clear();
     f.insert(literal);
     set_clauze1.insert(f);
 
-    cout <<"{";
+    ss <<"{";
     it4 = set_clauze1.begin();
     while(it4!=set_clauze1.end())
     {
         set <string> p = *it4;
-        cout <<"{";
+        ss <<"{";
         set <string> ::iterator it2 = p.begin();
         while(it2 != p.end())
         {
-            cout << *it2;
+            ss << *it2;
             it2++;
             if(it2 != p.end())
-                cout <<",";
+                ss <<",";
         }
-        cout <<"}";
+        ss <<"}";
         it4++;
         if(it4 != set_clauze1.end())
-            cout <<",";
+            ss <<",";
     }
-    cout <<"}";
-    cout <<'\n';
+    ss <<"}";
+    ss <<'\n';
 
-    cout <<"Se incearca aplicarea regulilor 1 si 2 asupra noilor seturi de clauze\n";
+    ss <<"Se incearca aplicarea regulilor 1 si 2 asupra noilor seturi de clauze\n";
 
-    aplica_regula_1_si_2_2(set_clauze2,set_literali_cu_negatie2,modif2, ok);
-    aplica_regula_1_si_2_2(set_clauze1,set_literali_cu_negatie1,modif2, ok);
+    aplica_regula_1_si_2_2(set_clauze2,set_literali_cu_negatie2,modif2, ok, ss);
+    aplica_regula_1_si_2_2(set_clauze1,set_literali_cu_negatie1,modif2, ok, ss);
 
 
 
     if(modif2 != 0)
     {
-        cout <<"Problema satisfiabilitatii primului set de clauze nu a fost inca rezolvata deci aplicam din nou DPLL pentru noul set de clauze\n";
-        impartire_dupa_literali(set_literali_cu_negatie2,set_clauze2, ok);
+        ss <<"Problema satisfiabilitatii primului set de clauze nu a fost inca rezolvata deci aplicam din nou DPLL pentru noul set de clauze\n";
+        impartire_dupa_literali(set_literali_cu_negatie2,set_clauze2, ok, ss);
 
     }
     else
 
     if(modif2 != 0)
     {
-        cout <<"Problema satisfiabilitatii celui deal doilea set de clauze nu a fost inca rezolvata deci aplicam din nou DPLL pentru noul set de clauze\n";
-        impartire_dupa_literali(set_literali_cu_negatie1,set_clauze1, ok);
+        ss <<"Problema satisfiabilitatii celui deal doilea set de clauze nu a fost inca rezolvata deci aplicam din nou DPLL pentru noul set de clauze\n";
+        impartire_dupa_literali(set_literali_cu_negatie1,set_clauze1, ok, ss);
     }
 
 

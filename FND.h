@@ -14,7 +14,7 @@ class FND : public FNN
 
 public:
      // operatii specifice //
-    void transformare_in_FND();
+    void transformare_in_FND(ostringstream& );
 
     // constructori//
     FND(string = "",Arbore* = NULL);

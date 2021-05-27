@@ -7,43 +7,43 @@
 	<bits/stdc++.h>
 	"Operations.h"
 
-1621962069 c:\c++\others\proiectlc+sp\operations.h
+1621980086 c:\c++\others\proiectlc+sp\operations.h
 	<bits/stdc++.h>
 
-1620931363 source:c:\c++\others\proiectlc+sp\fnc.cpp
+1621980253 source:c:\c++\others\proiectlc+sp\fnc.cpp
 	"FNC.h"
 
-1620585731 c:\c++\others\proiectlc+sp\fnc.h
+1621980282 c:\c++\others\proiectlc+sp\fnc.h
 	<bits/stdc++.h>
 	"Operations.h"
 	"Fprop.h"
 	"Arbore.h"
 	"FNN.h"
 
-1620931038 c:\c++\others\proiectlc+sp\fprop.h
+1621980847 c:\c++\others\proiectlc+sp\fprop.h
 	<bits/stdc++.h>
 	"Arbore.h"
 
-1620931035 c:\c++\others\proiectlc+sp\fnn.h
+1622035812 c:\c++\others\proiectlc+sp\fnn.h
 	<bits/stdc++.h>
 	"Operations.h"
 	"Fprop.h"
 	"Arbore.h"
 
-1620930722 source:c:\c++\others\proiectlc+sp\fnd.cpp
+1621980462 source:c:\c++\others\proiectlc+sp\fnd.cpp
 	"FND.h"
 
-1620326322 c:\c++\others\proiectlc+sp\fnd.h
+1621980475 c:\c++\others\proiectlc+sp\fnd.h
 	<bits/stdc++.h>
 	"Operations.h"
 	"Fprop.h"
 	"Arbore.h"
 	"FNN.h"
 
-1620931149 source:c:\c++\others\proiectlc+sp\fnn.cpp
+1622035798 source:c:\c++\others\proiectlc+sp\fnn.cpp
 	"FNN.h"
 
-1621879230 source:c:\c++\others\proiectlc+sp\fprop.cpp
+1621980864 source:c:\c++\others\proiectlc+sp\fprop.cpp
 	"Fprop.h"
 
 1621889616 source:c:\c++\others\proiectlc+sp\main.cpp
@@ -61,7 +61,7 @@
 	"Menu.h"
 	<SFML/Graphics.hpp>
 
-1621944361 c:\c++\others\proiectlc+sp\menu.h
+1622141120 c:\c++\others\proiectlc+sp\menu.h
 	<SFML/Graphics.hpp>
 	<bits/stdc++.h>
 	"Operations.h"
@@ -480,7 +480,10 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1621962092 source:c:\c++\others\proiectlc+sp\operations.cpp
+1622144448 source:c:\c++\others\proiectlc+sp\menu.cpp
+	"Menu.h"
+
+1621981071 source:c:\c++\others\proiectlc+sp\operations.cpp
 	"Operations.h"
 
 1618340124 source:c:\c++\others\proiectlc+sp\read.cpp
@@ -490,9 +493,6 @@
 1618340076 c:\c++\others\proiectlc+sp\read.h
 	<bits/stdc++.h>
 
-1621976598 source:c:\c++\others\proiectlc+sp\menu.cpp
-	"Menu.h"
-
-1621955891 source:c:\c++\others\proiectlc+sp\ui.cpp
+1622143598 source:c:\c++\others\proiectlc+sp\ui.cpp
 	"UI.h"
 

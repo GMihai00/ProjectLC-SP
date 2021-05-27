@@ -12,7 +12,7 @@ class FNN : public Fprop
 {
 public:
      // operatii specifice //
-     void transformareFNN();
+     void transformareFNN(ostringstream& );
      virtual void transformare_in_FND();
      virtual void transformare_in_FNC();
 

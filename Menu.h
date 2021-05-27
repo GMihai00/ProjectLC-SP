@@ -11,7 +11,7 @@
 #include "FNC.h"
 using namespace std;
 
-const int MAX_WINDOWS = 10;
+const int MAX_WINDOWS = 20;
 
 class Menu{
 
@@ -42,6 +42,7 @@ public:
     void removec3();
     int get_window();
     int get_line();
+    void resetapp();
 
 };
 

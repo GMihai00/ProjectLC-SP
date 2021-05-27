@@ -233,6 +233,45 @@ void UI()
                 menu.draw(window);
                 break;
             }
+
+            case 4:
+            {
+                    sf::Event event;
+                    while(window.pollEvent(event))
+                    {
+                        switch(event.type)
+                        {
+
+                             case sf::Event::Closed:
+                            {
+                                window.close();
+                                break;
+                            }
+                            case sf::Event::KeyReleased:
+                            {
+                                switch(event.key.code)
+                                {
+                                    case sf::Keyboard::Escape:
+                                    {
+
+                                        window.close();
+                                        break;
+                                    }
+
+                                    default:
+                                    {
+
+                                        menu.enter(window);
+                                        break;
+                                    }
+                                }
+
+                            }
+
+                        }
+                    }
+                    break;
+            }
             default:
             {
 

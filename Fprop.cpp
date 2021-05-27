@@ -25,9 +25,11 @@ void Fprop::setarbore(Arbore* a)
 }
 
 
-void Fprop::setformula(string s)
+void Fprop::setformula(string s, ostream& ss)
 {
-     s = transformare_structura_relaxata_in_structura_stricta(s);
+    map <string, int> m = {{"!", 5}, {"&", 4}, {"|", 3}, {">", 2}, {"~", 1}};
+
+     s = transformare_structura_relaxata_in_structura_stricta(s, m, ss);
     this->formula = s;
 }
 
@@ -203,15 +205,15 @@ void Fprop::update_validitate()
 
 
 }
-void Fprop::transformareFNN()
+void Fprop::transformareFNN(ostringstream&)
 {
     return;
 }
-void Fprop::transformare_in_FNC()
+void Fprop::transformare_in_FNC(ostringstream&)
 {
     return;
 }
-void Fprop::transformare_in_FND()
+void Fprop::transformare_in_FND(ostringstream&)
 {
     return;
 }
@@ -225,16 +227,16 @@ void Fprop::build_formula_from_clauze()
     return;
 }
 
-void Fprop::rezolutie()
+void Fprop::rezolutie(ostringstream&)
 {
     return;
 }
 
-void Fprop::DP()
+void Fprop::DP(ostringstream&)
 {
     return;
 }
-void Fprop::DPLL()
+void Fprop::DPLL(ostringstream&)
 {
     return;
 }
