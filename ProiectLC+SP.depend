@@ -480,7 +480,7 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1622144448 source:c:\c++\others\proiectlc+sp\menu.cpp
+1622146501 source:c:\c++\others\proiectlc+sp\menu.cpp
 	"Menu.h"
 
 1621981071 source:c:\c++\others\proiectlc+sp\operations.cpp
@@ -493,6 +493,6 @@
 1618340076 c:\c++\others\proiectlc+sp\read.h
 	<bits/stdc++.h>
 
-1622143598 source:c:\c++\others\proiectlc+sp\ui.cpp
+1622144578 source:c:\c++\others\proiectlc+sp\ui.cpp
 	"UI.h"
 
