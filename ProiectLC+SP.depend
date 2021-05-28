@@ -50,7 +50,7 @@
 	<bits/stdc++.h>
 	"UI.h"
 
-1621961983 c:\c++\others\proiectlc+sp\ui.h
+1622194465 c:\c++\others\proiectlc+sp\ui.h
 	<bits/stdc++.h>
 	"Operations.h"
 	"Arbore.h"
@@ -59,9 +59,10 @@
 	"FND.h"
 	"FNC.h"
 	"Menu.h"
+	"RichText.h"
 	<SFML/Graphics.hpp>
 
-1622141120 c:\c++\others\proiectlc+sp\menu.h
+1622196111 c:\c++\others\proiectlc+sp\menu.h
 	<SFML/Graphics.hpp>
 	<bits/stdc++.h>
 	"Operations.h"
@@ -70,6 +71,7 @@
 	"FNN.h"
 	"FND.h"
 	"FNC.h"
+	"RichText.h"
 
 1525815618 c:\users\asus\onedrive\desktop\sfml-2.5.1-windows-gcc-5.1.0-tdm-32-bit\sfml-2.5.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -480,6 +482,17 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
+1622194424 c:\c++\others\proiectlc+sp\richtext.h
+	<vector>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/System/Vector2.hpp>
+
+1622196046 source:c:\c++\others\proiectlc+sp\menu.cpp
+	"Menu.h"
+
 1621981071 source:c:\c++\others\proiectlc+sp\operations.cpp
 	"Operations.h"
 
@@ -490,6 +503,15 @@
 1618340076 c:\c++\others\proiectlc+sp\read.h
 	<bits/stdc++.h>
 
-1622144578 source:c:\c++\others\proiectlc+sp\ui.cpp
+1622194435 source:c:\c++\others\proiectlc+sp\richtext.cpp
+	<cassert>
+	<cmath>
+	"RichText.h"
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/System/String.hpp>
+
+1622195753 source:c:\c++\others\proiectlc+sp\ui.cpp
 	"UI.h"
 

@@ -76,6 +76,8 @@
 		<Unit filename="Operations.h" />
 		<Unit filename="Read.cpp" />
 		<Unit filename="Read.h" />
+		<Unit filename="RichText.cpp" />
+		<Unit filename="RichText.h" />
 		<Unit filename="UI.cpp" />
 		<Unit filename="UI.h" />
 		<Unit filename="main.cpp" />

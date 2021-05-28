@@ -9,7 +9,6 @@ void UI()
 
     Menu menu(window.getSize().x, window.getSize().y);
 
-
     while(window.isOpen())
     {
         int cur_w = menu.get_window();

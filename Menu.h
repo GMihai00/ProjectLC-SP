@@ -9,6 +9,8 @@
 #include "FNN.h"
 #include "FND.h"
 #include "FNC.h"
+#include "RichText.h"
+
 using namespace std;
 
 const int MAX_WINDOWS = 20;
@@ -24,6 +26,7 @@ protected:
     int last_line;
     sf::Font font;
     vector <sf::Text> txt[MAX_WINDOWS];
+    vector <sfe::RichText> visualtxt[MAX_WINDOWS];
 
 public:
     Menu(float w, float h);

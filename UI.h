@@ -9,7 +9,9 @@
 #include "FND.h"
 #include "FNC.h"
 #include "Menu.h"
+#include "RichText.h"
 #include <SFML/Graphics.hpp>
+
 
 using namespace std;
 

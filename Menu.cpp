@@ -17,6 +17,8 @@ Menu::Menu(float w, float h)
     f.setString("Relaxat->Strict");
     f.setColor(sf::Color::Green);
     f.setPosition(sf::Vector2f(w / 2.3, h / (sw + 1)));
+
+
     txt[0].push_back(f);
     f.setFont(font);
     f.setString("Valoare adevar");
@@ -120,6 +122,8 @@ Menu::Menu(float w, float h)
     f.setColor(sf::Color::White);
     txt[4].push_back(f);
 
+    // txt[5] pt verificare corectitudine si mai pot sa adaug vizualizari si la restul
+
 
 
 
@@ -143,6 +147,7 @@ void Menu::resetapp()
     txt[0][0].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1)));
     txt[0][0].setCharacterSize(30);
 
+
     txt[0][1].setString("Valoare adevar");
     txt[0][1].setColor(sf::Color::White);
     txt[0][1].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 2));
@@ -152,6 +157,7 @@ void Menu::resetapp()
     txt[0][2].setColor(sf::Color::White);
     txt[0][2].setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 3));
     txt[0][2].setCharacterSize(30);
+
 
     txt[0][3].setString("Validitate");
     txt[0][3].setColor(sf::Color::White);
@@ -235,6 +241,15 @@ void Menu::resetapp()
     {
         txt[4][i].setString("");
         txt[4][i].setCharacterSize(30);
+    }
+
+
+
+
+    for(int i =0 ; i <= 4; i++)
+    {
+        for(int j = 0; j < txt[i].size(); j++)
+                txt[i][j].setScale(sf::Vector2f(1.0, 1.0));
     }
 
 

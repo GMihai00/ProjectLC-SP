@@ -1,144 +1,19 @@
+               * * *                                   
 
-Operatiile de reducere a echivalentei  efectuate sunt:
+               * | *                                   
 
-((a&b)~(c|e)) echivalent cu (((!(a&b))|(c|e))&((!(c|e))|(a&b)))
+          -----* * *-----                         
+     * * *               * * *               
 
-Operatiile de tip De Morgan efectuate sunt:
+     * & *               * c *               
 
-(((!(a&b))|(c|e))&((!(c|e))|(a&b))) echivalent cu ((((!a)|(!b))|(c|e))&((!(c|e))|(a&b)))
+     * * *               * * *               
+* * *     * * *                         
 
-((((!a)|(!b))|(c|e))&((!(c|e))|(a&b))) echivalent cu ((((!a)|(!b))|(c|e))&(((!c)&(!e))|(a&b)))
+* a *     * b *                         
 
-Formula curenta este:((((!a)|(!b))|(c|e))&(((!c)&(!e))|(a&b)))
+* * *     * * *                         
 
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:&
+Forma in sintaxa stricta :((a&b)|c)
 
-Formula din stanga conectorului cel mai semnificativ este:(((!a)|(!b))|(c|e))
-
-Formula din dreapta conectorului cel mai semnificativ este:(((!c)&(!e))|(a&b))
-
-Conectorul cel mai semnificativ este & deci va trebui sa verific doar daca formula din stanga si din dreapta sunt sub forma de FNC
-
-Formula curenta este:(((!c)&(!e))|(a&b))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:|
-
-Formula din stanga conectorului cel mai semnificativ este:((!c)&(!e))
-
-Formula din dreapta conectorului cel mai semnificativ este:(a&b)
-
-Conectorul cel mai semnificativ este | deci va trebui sa aplic distributivitatea si eventual asociativitatea si comutativitatea dintre doi literali conectati de un conector
-
-Am determinat cel mai semnificativ conector al propozitie din stanga acesta fiind:&
-
-Formula din stanga celui mai semnificativ semn al formulei din stanga este:(!c)
-
-Formula din dreapta celui mai semnificativ semn al formulei din stanga este:(!e)
-
-Am aplicat distributivitatea conectorului & fata de conectorul | si am obtinut:((!c)|(a&b))&((!e)|(a&b))
-
-Formula curenta este:(((!c)|(a&b))&((!e)|(a&b)))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:&
-
-Formula din stanga conectorului cel mai semnificativ este:((!c)|(a&b))
-
-Formula din dreapta conectorului cel mai semnificativ este:((!e)|(a&b))
-
-Conectorul cel mai semnificativ este & deci va trebui sa verific doar daca formula din stanga si din dreapta sunt sub forma de FNC
-
-Formula curenta este:((!e)|(a&b))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:|
-
-Formula din stanga conectorului cel mai semnificativ este:(!e)
-
-Formula din dreapta conectorului cel mai semnificativ este:(a&b)
-
-Conectorul cel mai semnificativ este | deci va trebui sa aplic distributivitatea si eventual asociativitatea si comutativitatea dintre doi literali conectati de un conector
-
-Am determinat cel mai semnificativ conector al propozitie din stanga acesta fiind:&
-
-Formula din stanga celui mai semnificativ semn al formulei din stanga este:a
-
-Formula din dreapta celui mai semnificativ semn al formulei din stanga este:b
-
-Am aplicat distributivitatea conectorului & fata de conectorul | si am obtinut:(a|(!e))&(b|(!e))
-
-Formula curenta este:((a|(!e))&(b|(!e)))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:&
-
-Formula din stanga conectorului cel mai semnificativ este:(a|(!e))
-
-Formula din dreapta conectorului cel mai semnificativ este:(b|(!e))
-
-Conectorul cel mai semnificativ este & deci va trebui sa verific doar daca formula din stanga si din dreapta sunt sub forma de FNC
-
-Formula curenta este:(b|(!e))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:|
-
-Formula curenta este in FNC deoarece contine conectori de un singur tip
-
-Formula curenta este:(a|(!e))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:|
-
-Formula curenta este in FNC deoarece contine conectori de un singur tip
-
-Formula curenta este:((!c)|(a&b))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:|
-
-Formula din stanga conectorului cel mai semnificativ este:(!c)
-
-Formula din dreapta conectorului cel mai semnificativ este:(a&b)
-
-Conectorul cel mai semnificativ este | deci va trebui sa aplic distributivitatea si eventual asociativitatea si comutativitatea dintre doi literali conectati de un conector
-
-Am determinat cel mai semnificativ conector al propozitie din stanga acesta fiind:&
-
-Formula din stanga celui mai semnificativ semn al formulei din stanga este:a
-
-Formula din dreapta celui mai semnificativ semn al formulei din stanga este:b
-
-Am aplicat distributivitatea conectorului & fata de conectorul | si am obtinut:(a|(!c))&(b|(!c))
-
-Formula curenta este:((a|(!c))&(b|(!c)))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:&
-
-Formula din stanga conectorului cel mai semnificativ este:(a|(!c))
-
-Formula din dreapta conectorului cel mai semnificativ este:(b|(!c))
-
-Conectorul cel mai semnificativ este & deci va trebui sa verific doar daca formula din stanga si din dreapta sunt sub forma de FNC
-
-Formula curenta este:(b|(!c))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:|
-
-Formula curenta este in FNC deoarece contine conectori de un singur tip
-
-Formula curenta este:(a|(!c))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:|
-
-Formula curenta este in FNC deoarece contine conectori de un singur tip
-
-Formula curenta este:(((!a)|(!b))|(c|e))
-
-Am determinat cel mai semnificativ conector al propozitie curente acesta fiind:|
-
-Formula curenta este in FNC deoarece contine conectori de un singur tip
-
-Am determinat setul de clauze corespunzator FNC:
-{{!a,!b,c,e},{!c,a},{!c,b},{!e,a},{!e,b}}
-
-Dupa ce au fost incercate toate combinatiile posibile de clauze nu s-a obtinut clauza vida
-
-Setul de clauze final este:{{!a!bce},{!ca},{!cb},{!ea},{!eb}}
-
-Propozitia este satisfiabila
 
