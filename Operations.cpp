@@ -259,6 +259,7 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
         return dublicat;
 }
 
+
 string reducere1(string s, ostream& ss)
 {
     string cpys;

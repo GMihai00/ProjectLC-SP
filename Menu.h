@@ -21,13 +21,11 @@ protected:
 
     float width;
     float height;
-    int cur_window;
+    int cur_window; // 9 printwindow
     int cur_line;
     int last_line;
     sf::Font font;
     vector <sf::Text> txt[MAX_WINDOWS];
-    vector <sfe::RichText> visualtxt[MAX_WINDOWS];
-
 public:
     Menu(float w, float h);
     ~Menu();
@@ -46,6 +44,7 @@ public:
     int get_window();
     int get_line();
     void resetapp();
+    friend string transformare_structura_relaxata_in_structura_stricta(string c2, map <string,int> m, sfe::RichText,  sf::RenderWindow window);
 
 };
 

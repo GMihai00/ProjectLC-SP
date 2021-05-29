@@ -2,6 +2,7 @@
 #define OPERATIONS_H_INCLUDED
 
 #include <bits/stdc++.h>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 
@@ -16,6 +17,7 @@ int op3(int , int );
 int op4(int , int );
 
 int op6(int , int );
+
 
 string transformare_structura_relaxata_in_structura_stricta(string = "",  map <string, int> = {{"!", 5}, {"&", 4}, {"|", 3}, {">", 2}, {"~", 1}}, ostream& = cout);
 
