@@ -349,7 +349,7 @@ Menu::Menu(float w, float h)
     f.setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 12));
     f.setString("Iesire");
     f.setColor(sf::Color::White);
-    f.setPosition(sf::Vector2f(w / 2.3, h / (sw + 1) * 13));
+
     txt[0].push_back(f);
 
     cur_window = 0;
@@ -1091,7 +1091,7 @@ void Menu::enter(sf::RenderWindow &window)
 
                                             string s2 = txt[cur_window][1].getString();
                                              transformare_structura_relaxata_in_structura_stricta(s2, m, window);
-                                                                        int cnt2 = 0;
+                                            int cnt2 = 0;
                                             while(window.isOpen() && cnt2 == 0)
                                             {sf::Event event;
                                                 while(window.pollEvent(event) && cnt2 == 0)
@@ -1155,6 +1155,21 @@ void Menu::enter(sf::RenderWindow &window)
                     transformare_structura_relaxata_in_structura_stricta(s, m, window);
 
                       int cnt = 0;
+
+                      ex->setformula(s, ss);
+
+
+
+                    ex->transformareFNN(ss);
+
+                    string reguli = ss.str();
+                    int cnt2 = 0;
+                    int cnt3 = 0;
+                    sfe::RichText rtvisual(font);
+                    rtvisual.setCharacterSize(25);
+                    rtvisual << sf::Color::White;
+                    rtvisual << " ";
+
                             while(window.isOpen() && cnt == 0)
                             {sf::Event event;
                                 while(window.pollEvent(event) && cnt == 0)
@@ -1172,33 +1187,74 @@ void Menu::enter(sf::RenderWindow &window)
                                         case sf::Event::KeyReleased:
                                         {
 
-                                            ex->setformula(s, ss);
-                                            ex->transformareFNN(ss);
-                                            ex->update_arbore();
-                                            txt[cur_window][0].setString(ex->getformula());
-                                            this->draw(window);
-                                            ex->getarbore()->Afisare(ss);
-                                            ss <<'\n';
-                                            ss <<"Forma FNN a formulei este :" << ex->getformula()<<'\n';
 
-                                            cur_window = 4;
-                                            txt[cur_window][0].setString(ss.str());
-                                            txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
-                                             int f = string(txt[cur_window][0].getString()).size();
-                                            f = 1ll * this->width * this->height / 100 /  f;
+                                             if(cnt2 < reguli.size())
+                                             {
 
-                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
-                                            this->draw(window);
-                                            cnt++;
+
+
+                                                        rtvisual.clear();
+
+
+
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] != '\n')
+                                                        {
+                                                            if(cnt2 - 1 < reguli.size() && (reguli[cnt2 - 1] == '|'   || reguli[cnt2 - 1] == '!' || reguli[cnt2 - 1] == '~' || reguli[cnt2 - 1] == '>'))
+                                                                rtvisual <<" ";
+
+                                                            rtvisual << reguli[cnt2];
+                                                            if(cnt2 + 1 < reguli.size() && (reguli[cnt2 + 1] == '|'    || reguli[cnt2 + 1] == '~' || reguli[cnt2 + 1] == '>'))
+                                                                rtvisual <<" ";
+
+
+
+                                                            cnt2++;
+                                                        }
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] == '\n')
+                                                            cnt2++;
+
+                                                        window.clear();
+                                                        window.draw(rtvisual);
+                                                        window.display();
+
+
+
+
+                                             }
+                                             else
+                                            if(cnt3 == 0)
+                                            {
+                                                cnt3++;
+                                                ex->update_arbore();
+                                                        txt[cur_window][0].setString(ex->getformula());
+                                                        this->draw(window);
+                                                        ex->getarbore()->Afisare(ss);
+                                                        ss <<'\n';
+                                                        ss <<"Forma FNN a formulei este :" << ex->getformula()<<'\n';
+
+                                                        cur_window = 4;
+                                                        txt[cur_window][0].setString(ss.str());
+                                                        txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
+                                                         int f = string(txt[cur_window][0].getString()).size();
+                                                        f = 1ll * this->width * this->height / 100 /  f;
+
+                                                        txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                                        this->draw(window);
+                                            }
+                                            else
+                                                cnt++;
                                             break;
                                         }
                                     }
                                 }
-                            }
+                                    }
 
 
 
-                    break;
+
+
+
+                            break;
                 }
                 case 6:
                 {
@@ -1207,7 +1263,22 @@ void Menu::enter(sf::RenderWindow &window)
                      map <string, int> m ={{"!", 5}, {"&", 4}, {"|", 3}, {">", 2}, {"~", 1}};
                     transformare_structura_relaxata_in_structura_stricta(s, m, window);
 
-                      int cnt = 0;
+                            int cnt = 0;
+
+                      ex->setformula(s, ss);
+
+
+
+                    ex->transformare_in_FND(ss);
+
+                    string reguli = ss.str();
+                    int cnt2 = 0;
+                    int cnt3 = 0;
+                    sfe::RichText rtvisual(font);
+                    rtvisual.setCharacterSize(25);
+                    rtvisual << sf::Color::White;
+                    rtvisual << " ";
+
                             while(window.isOpen() && cnt == 0)
                             {sf::Event event;
                                 while(window.pollEvent(event) && cnt == 0)
@@ -1224,31 +1295,68 @@ void Menu::enter(sf::RenderWindow &window)
 
                                         case sf::Event::KeyReleased:
                                         {
-                                              ex->setformula(s, ss);
-                                            ex->transformare_in_FND(ss);
-                                            ex->update_arbore();
-                                            txt[cur_window][0].setString(ex->getformula());
-                                            this->draw(window);
-                                            ex->getarbore()->Afisare(ss);
-                                            ss <<'\n';
-                                            ss <<"Forma FND a formulei este :" << ex->getformula()<<'\n';
-
-                                            cur_window = 4;
-                                            txt[cur_window][0].setString(ss.str());
-                                            txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
-                                             int f = string(txt[cur_window][0].getString()).size();
-                                            f = 1ll * this->width * this->height / 100 /  f;
 
 
-                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
-                                            this->draw(window);
-                                            cnt++;
+                                             if(cnt2 < reguli.size())
+                                             {
+
+
+
+                                                        rtvisual.clear();
+
+
+
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] != '\n')
+                                                        {
+                                                            if(cnt2 - 1 < reguli.size() && (reguli[cnt2 - 1] == '|'   || reguli[cnt2 - 1] == '!' || reguli[cnt2 - 1] == '~' || reguli[cnt2 - 1] == '>'))
+                                                                rtvisual <<" ";
+
+                                                            rtvisual << reguli[cnt2];
+                                                            if(cnt2 + 1 < reguli.size() && (reguli[cnt2 + 1] == '|'    || reguli[cnt2 + 1] == '~' || reguli[cnt2 + 1] == '>'))
+                                                                rtvisual <<" ";
+
+
+
+                                                            cnt2++;
+                                                        }
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] == '\n')
+                                                            cnt2++;
+
+                                                        window.clear();
+                                                        window.draw(rtvisual);
+                                                        window.display();
+
+
+
+
+                                             }
+                                             else
+                                            if(cnt3 == 0)
+                                            {
+                                                cnt3++;
+                                                ex->update_arbore();
+                                                        txt[cur_window][0].setString(ex->getformula());
+                                                        this->draw(window);
+                                                        ex->getarbore()->Afisare(ss);
+                                                        ss <<'\n';
+                                                        ss <<"Forma FND a formulei este :" << ex->getformula()<<'\n';
+
+                                                        cur_window = 4;
+                                                        txt[cur_window][0].setString(ss.str());
+                                                        txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
+                                                         int f = string(txt[cur_window][0].getString()).size();
+                                                        f = 1ll * this->width * this->height / 100 /  f;
+
+                                                        txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                                        this->draw(window);
+                                            }
+                                            else
+                                                cnt++;
                                             break;
                                         }
                                     }
                                 }
-                            }
-
+                                    }
 
 
                     break;
@@ -1261,7 +1369,22 @@ void Menu::enter(sf::RenderWindow &window)
                     transformare_structura_relaxata_in_structura_stricta(s, m, window);
 
 
-                      int cnt = 0;
+                                                 int cnt = 0;
+
+                      ex->setformula(s, ss);
+
+
+
+                    ex->transformare_in_FNC(ss);
+
+                    string reguli = ss.str();
+                    int cnt2 = 0;
+                    int cnt3 = 0;
+                    sfe::RichText rtvisual(font);
+                    rtvisual.setCharacterSize(25);
+                    rtvisual << sf::Color::White;
+                    rtvisual << " ";
+
                             while(window.isOpen() && cnt == 0)
                             {sf::Event event;
                                 while(window.pollEvent(event) && cnt == 0)
@@ -1279,30 +1402,67 @@ void Menu::enter(sf::RenderWindow &window)
                                         case sf::Event::KeyReleased:
                                         {
 
-                                            ex->setformula(s, ss);
-                                            ex->transformare_in_FNC(ss);
-                                            ex->update_arbore();
-                                            txt[cur_window][0].setString(ex->getformula());
-                                            this->draw(window);
-                                            ex->getarbore()->Afisare(ss);
-                                            ss <<'\n';
-                                            ss <<"Forma FNC a formulei este :" << ex->getformula()<<'\n';
 
-                                            cur_window = 4;
-                                            txt[cur_window][0].setString(ss.str());
-                                            txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
-                                             int f = string(txt[cur_window][0].getString()).size();
-                                            f = 1ll * this->width * this->height / 100 /  f;
+                                             if(cnt2 < reguli.size())
+                                             {
 
-                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
-                                            this->draw(window);
 
-                                            cnt++;
+
+                                                        rtvisual.clear();
+
+
+
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] != '\n')
+                                                        {
+                                                            if(cnt2 - 1 < reguli.size() && (reguli[cnt2 - 1] == '|'   || reguli[cnt2 - 1] == '!' || reguli[cnt2 - 1] == '~' || reguli[cnt2 - 1] == '>'))
+                                                                rtvisual <<" ";
+
+                                                            rtvisual << reguli[cnt2];
+                                                            if(cnt2 + 1 < reguli.size() && (reguli[cnt2 + 1] == '|'    || reguli[cnt2 + 1] == '~' || reguli[cnt2 + 1] == '>'))
+                                                                rtvisual <<" ";
+
+
+
+                                                            cnt2++;
+                                                        }
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] == '\n')
+                                                            cnt2++;
+
+                                                        window.clear();
+                                                        window.draw(rtvisual);
+                                                        window.display();
+
+
+
+
+                                             }
+                                             else
+                                            if(cnt3 == 0)
+                                            {
+                                                cnt3++;
+                                                ex->update_arbore();
+                                                        txt[cur_window][0].setString(ex->getformula());
+                                                        this->draw(window);
+                                                        ex->getarbore()->Afisare(ss);
+                                                        ss <<'\n';
+                                                        ss <<"Forma FNC a formulei este :" << ex->getformula()<<'\n';
+
+                                                        cur_window = 4;
+                                                        txt[cur_window][0].setString(ss.str());
+                                                        txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
+                                                         int f = string(txt[cur_window][0].getString()).size();
+                                                        f = 1ll * this->width * this->height / 100 /  f;
+
+                                                        txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                                        this->draw(window);
+                                            }
+                                            else
+                                                cnt++;
                                             break;
                                         }
                                     }
                                 }
-                            }
+                                    }
 
 
                     break;
@@ -1316,6 +1476,25 @@ void Menu::enter(sf::RenderWindow &window)
                     transformare_structura_relaxata_in_structura_stricta(s, m, window);
 
                       int cnt = 0;
+
+                                    ex->setformula(s, ss);
+                                ex->transformare_in_FNC(ss);
+                                ex->update_arbore();
+                                txt[cur_window][0].setString(ex->getformula());
+
+
+                                ex->update_literali();
+                                ex->update_clauze();
+                                ex->rezolutie(ss);
+
+                    string reguli = ss.str();
+                    int cnt2 = 0;
+                    int cnt3 = 0;
+                    sfe::RichText rtvisual(font);
+                    rtvisual.setCharacterSize(25);
+                    rtvisual << sf::Color::White;
+                    rtvisual << " ";
+
                             while(window.isOpen() && cnt == 0)
                             {sf::Event event;
                                 while(window.pollEvent(event) && cnt == 0)
@@ -1332,17 +1511,47 @@ void Menu::enter(sf::RenderWindow &window)
 
                                         case sf::Event::KeyReleased:
                                         {
-                                               ex->setformula(s, ss);
-                                            ex->transformare_in_FNC(ss);
-                                            ex->update_arbore();
-                                            txt[cur_window][0].setString(ex->getformula());
-                                             this->draw(window);
 
-                                            ex->update_literali();
-                                            ex->update_clauze();
-                                            ex->rezolutie(ss);
-                                             cur_window  = 4;
-                                              txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
+
+                                             if(cnt2 < reguli.size())
+                                             {
+
+
+
+                                                        rtvisual.clear();
+
+
+
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] != '\n')
+                                                        {
+                                                            if(cnt2 - 1 < reguli.size() && (reguli[cnt2 - 1] == '|'   || reguli[cnt2 - 1] == '!' || reguli[cnt2 - 1] == '~' || reguli[cnt2 - 1] == '>'))
+                                                                rtvisual <<" ";
+
+                                                            rtvisual << reguli[cnt2];
+                                                            if(cnt2 + 1 < reguli.size() && (reguli[cnt2 + 1] == '|'    || reguli[cnt2 + 1] == '~' || reguli[cnt2 + 1] == '>'))
+                                                                rtvisual <<" ";
+
+
+
+                                                            cnt2++;
+                                                        }
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] == '\n')
+                                                            cnt2++;
+
+                                                        window.clear();
+                                                        window.draw(rtvisual);
+                                                        window.display();
+
+
+
+
+                                             }
+                                             else
+                                            if(cnt3 == 0)
+                                            {
+
+                                            cur_window  = 4;
+                                            txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
                                             txt[cur_window][0].setString(ss.str());
                                              int f = string(txt[cur_window][0].getString()).size();
                                             f = 1ll * this->width * this->height / 100 /  f;
@@ -1350,12 +1559,17 @@ void Menu::enter(sf::RenderWindow &window)
 
                                             txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
                                             this->draw(window);
-                                            cnt++;
+                                            cnt3++;
+
+                                            }
+                                            else
+                                                cnt++;
                                             break;
                                         }
                                     }
                                 }
-                            }
+                                    }
+
 
 
 
@@ -1367,11 +1581,29 @@ void Menu::enter(sf::RenderWindow &window)
                     ex = new FNC;
 
                     string s = txt[cur_window][0].getString();
-                    ex->setformula(s, ss);
                       map <string, int> m ={{"!", 5}, {"&", 4}, {"|", 3}, {">", 2}, {"~", 1}};
                     transformare_structura_relaxata_in_structura_stricta(s, m, window);
 
                       int cnt = 0;
+
+                                    ex->setformula(s, ss);
+                                ex->transformare_in_FNC(ss);
+                                ex->update_arbore();
+                                txt[cur_window][0].setString(ex->getformula());
+
+
+                                ex->update_literali();
+                                ex->update_clauze();
+                                ex->DP(ss);
+
+                    string reguli = ss.str();
+                    int cnt2 = 0;
+                    int cnt3 = 0;
+                    sfe::RichText rtvisual(font);
+                    rtvisual.setCharacterSize(25);
+                    rtvisual << sf::Color::White;
+                    rtvisual << " ";
+
                             while(window.isOpen() && cnt == 0)
                             {sf::Event event;
                                 while(window.pollEvent(event) && cnt == 0)
@@ -1389,27 +1621,65 @@ void Menu::enter(sf::RenderWindow &window)
                                         case sf::Event::KeyReleased:
                                         {
 
-                                            ex->transformare_in_FNC(ss);
-                                            ex->update_arbore();
 
-                                            ex->update_literali();
-                                            ex->update_clauze();
-                                            ex->DP(ss);
-                                             cur_window  = 4;
-                                              txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
+                                             if(cnt2 < reguli.size())
+                                             {
+
+
+
+                                                        rtvisual.clear();
+
+
+
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] != '\n')
+                                                        {
+                                                            if(cnt2 - 1 < reguli.size() && (reguli[cnt2 - 1] == '|'   || reguli[cnt2 - 1] == '!' || reguli[cnt2 - 1] == '~' || reguli[cnt2 - 1] == '>'))
+                                                                rtvisual <<" ";
+
+                                                            rtvisual << reguli[cnt2];
+                                                            if(cnt2 + 1 < reguli.size() && (reguli[cnt2 + 1] == '|'    || reguli[cnt2 + 1] == '~' || reguli[cnt2 + 1] == '>'))
+                                                                rtvisual <<" ";
+
+
+
+                                                            cnt2++;
+                                                        }
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] == '\n')
+                                                            cnt2++;
+
+                                                        window.clear();
+                                                        window.draw(rtvisual);
+                                                        window.display();
+
+
+
+
+                                             }
+                                             else
+                                            if(cnt3 == 0)
+                                            {
+
+                                            cur_window  = 4;
+                                            txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
                                             txt[cur_window][0].setString(ss.str());
                                              int f = string(txt[cur_window][0].getString()).size();
                                             f = 1ll * this->width * this->height / 100 /  f;
 
+
                                             txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
                                             this->draw(window);
+                                            cnt3++;
 
-                                            cnt++;
+                                            }
+                                            else
+                                                cnt++;
                                             break;
                                         }
                                     }
                                 }
-                            }
+                                    }
+
+
 
                     break;
                 }
@@ -1422,6 +1692,25 @@ void Menu::enter(sf::RenderWindow &window)
                     transformare_structura_relaxata_in_structura_stricta(s, m, window);
 
                       int cnt = 0;
+
+                                    ex->setformula(s, ss);
+                                ex->transformare_in_FNC(ss);
+                                ex->update_arbore();
+                                txt[cur_window][0].setString(ex->getformula());
+
+
+                                ex->update_literali();
+                                ex->update_clauze();
+                                ex->DPLL(ss);
+
+                    string reguli = ss.str();
+                    int cnt2 = 0;
+                    int cnt3 = 0;
+                    sfe::RichText rtvisual(font);
+                    rtvisual.setCharacterSize(25);
+                    rtvisual << sf::Color::White;
+                    rtvisual << " ";
+
                             while(window.isOpen() && cnt == 0)
                             {sf::Event event;
                                 while(window.pollEvent(event) && cnt == 0)
@@ -1439,30 +1728,63 @@ void Menu::enter(sf::RenderWindow &window)
                                         case sf::Event::KeyReleased:
                                         {
 
-                                            ex->setformula(s, ss);
-                                            ex->transformare_in_FNC(ss);
-                                            ex->update_arbore();
-                                            txt[cur_window][0].setString(ex->getformula());
 
-                                            this->draw(window);
-                                            ex->update_literali();
-                                            ex->update_clauze();
-                                            ex->DPLL(ss);
-                                             cur_window  = 4;
-                                              txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
+                                             if(cnt2 < reguli.size())
+                                             {
+
+
+
+                                                        rtvisual.clear();
+
+
+
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] != '\n')
+                                                        {
+                                                            if(cnt2 - 1 < reguli.size() && (reguli[cnt2 - 1] == '|'   || reguli[cnt2 - 1] == '!' || reguli[cnt2 - 1] == '~' || reguli[cnt2 - 1] == '>'))
+                                                                rtvisual <<" ";
+
+                                                            rtvisual << reguli[cnt2];
+                                                            if(cnt2 + 1 < reguli.size() && (reguli[cnt2 + 1] == '|'    || reguli[cnt2 + 1] == '~' || reguli[cnt2 + 1] == '>'))
+                                                                rtvisual <<" ";
+
+
+
+                                                            cnt2++;
+                                                        }
+                                                        while(cnt2 < reguli.size() && reguli[cnt2] == '\n')
+                                                            cnt2++;
+
+                                                        window.clear();
+                                                        window.draw(rtvisual);
+                                                        window.display();
+
+
+
+
+                                             }
+                                             else
+                                            if(cnt3 == 0)
+                                            {
+
+                                            cur_window  = 4;
+                                            txt[cur_window][0].setPosition(sf::Vector2f(0., 0.));
                                             txt[cur_window][0].setString(ss.str());
                                              int f = string(txt[cur_window][0].getString()).size();
                                             f = 1ll * this->width * this->height / 100 /  f;
 
+
                                             txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
                                             this->draw(window);
-                                            cnt++;
+                                            cnt3++;
+
+                                            }
+                                            else
+                                                cnt++;
                                             break;
                                         }
                                     }
                                 }
-                            }
-
+                                    }
 
 
 
