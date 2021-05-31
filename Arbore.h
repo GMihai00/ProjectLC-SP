@@ -7,8 +7,8 @@
 using namespace std;
 
 
-// arborele se modifica la fiecare in parte !!!!!!!!!!!//
-class Fprop; // prototip clasa//
+
+class Fprop;
 
 typedef struct Node
 {
@@ -24,11 +24,15 @@ protected:
     int height;
 public:
 
+    // returneaza radacina arborelui
     Node* get_root() const;
 
+    // construieste arborele pe baza unei formule propozitionale, reprezentate de un string
     void addnodes(string);
+    // updateaza inaltimea arborelui, se apeleaza odata cu addnodes
     void update_height(Node* = NULL, int = 1);
 
+    // afiseaza arborele
     ostream& Afisare(ostream&);
     Arbore();
     Arbore(const Arbore &);
@@ -36,6 +40,7 @@ public:
 
     Arbore& operator =(const Arbore&);
 
+    // determina valoarea sub interpretare a unei formule prop.
     bool det_val_interpretare(Node* = NULL, map <string, int> ={} ) const;
 
 

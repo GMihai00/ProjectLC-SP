@@ -22,27 +22,39 @@ protected:
     set <string> literali;
 
 public:
-    // getere //
+    // returneaza formula
     string getformula();
+    // returneaza validitatea
     bool getvaliditate();
+    // returneaza satisfiabilitatea
     bool getsatisfiabilitate();
+    // returneaza aroborele formulei
     Arbore* getarbore();
     virtual  void transformareFNN(ostringstream&);
     virtual  void transformare_in_FND(ostringstream&);
     virtual  void transformare_in_FNC(ostringstream&);
-    // setare //
+
+    // updateaza formula
     void setformula(string, ostream&);
+    // updateaza arborele
     void setarbore(Arbore*);
 
-    // operatii specifice //
+    // construieste arborele corespunzator formulei curente
     void update_arbore();
+    // determina valoarea sub o anumita interpretare a formulei prop
     bool det_arb_val_interpretare(map <string, int>) const;
+    // updateaza setul de literali
     void update_literali();
+    // verifica daca un literal este in set
     bool verif_is_in_set(string);
+    // returneaza nr de literali
     int get_size_literali();
+
     virtual void update_satisfiabilitate();
     virtual void update_validitate();
+    // verifica daca doua formule sunt echivaletne
     friend bool echivalent(const Fprop&, const Fprop&);
+    // back pe set literali
     friend void bt_fprop(int ,map <string, int>,  Node*,const Fprop&, bool &, set <string> );
 
     // constructori //

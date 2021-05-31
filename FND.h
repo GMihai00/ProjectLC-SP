@@ -13,13 +13,14 @@ class FND : public FNN
 {
 
 public:
-     // operatii specifice //
+
+    //Transformare din Fprop in FND
     void transformare_in_FND(ostringstream& );
 
-    // constructori//
+
     FND(string = "",Arbore* = NULL);
 
-    // deconstructori //
+
 
 };
 

@@ -11,19 +11,24 @@ using namespace std;
 class FNN : public Fprop
 {
 public:
-     // operatii specifice //
+     //Transformare din Fprop in FNN
      void transformareFNN(ostringstream& );
+     //Transformare din Fprop in FND
      virtual void transformare_in_FND();
+     //Transformare din Fprop in FNC
      virtual void transformare_in_FNC();
 
+    // actualizeaza setul de clauze
     virtual void update_clauze();
-    virtual void build_formula_from_clauze();
+
+    virtual void build_formula_from_clauze(); // WIP
 
     virtual void rezolutie();
-
+    // DP
     virtual void DP();
+    // DPLL
     virtual void DPLL();
-    // constructori//
+
     FNN(string = "",Arbore* = NULL);
 };
 
