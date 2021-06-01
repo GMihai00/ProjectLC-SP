@@ -54,7 +54,7 @@ public:
     // reseteaza aplicatia si se intoarce la fereastra principala
     void resetapp();
     // vizualizare transformare din structura stricta in structura relaxata WIP
-    friend string transformare_structura_relaxata_in_structura_stricta(string c2, map <string,int> m, sfe::RichText,  sf::RenderWindow window);
+    friend void transformare_structura_relaxata_in_structura_stricta(string c2, map <string,int> m, sfe::RichText,  sf::RenderWindow window);
 
 };
 

@@ -3,11 +3,11 @@
 	"Arbore.h"
 	"Operations.h"
 
-1621962005 c:\c++\others\proiectlc+sp\arbore.h
+1622462738 c:\c++\others\proiectlc+sp\arbore.h
 	<bits/stdc++.h>
 	"Operations.h"
 
-1622280134 c:\c++\others\proiectlc+sp\operations.h
+1622462912 c:\c++\others\proiectlc+sp\operations.h
 	<bits/stdc++.h>
 	<SFML/Graphics.hpp>
 
@@ -423,18 +423,18 @@
 1621980253 source:c:\c++\others\proiectlc+sp\fnc.cpp
 	"FNC.h"
 
-1621980282 c:\c++\others\proiectlc+sp\fnc.h
+1622463045 c:\c++\others\proiectlc+sp\fnc.h
 	<bits/stdc++.h>
 	"Operations.h"
 	"Fprop.h"
 	"Arbore.h"
 	"FNN.h"
 
-1621980847 c:\c++\others\proiectlc+sp\fprop.h
+1622463198 c:\c++\others\proiectlc+sp\fprop.h
 	<bits/stdc++.h>
 	"Arbore.h"
 
-1622035812 c:\c++\others\proiectlc+sp\fnn.h
+1622462981 c:\c++\others\proiectlc+sp\fnn.h
 	<bits/stdc++.h>
 	"Operations.h"
 	"Fprop.h"
@@ -443,7 +443,7 @@
 1621980462 source:c:\c++\others\proiectlc+sp\fnd.cpp
 	"FND.h"
 
-1621980475 c:\c++\others\proiectlc+sp\fnd.h
+1622463006 c:\c++\others\proiectlc+sp\fnd.h
 	<bits/stdc++.h>
 	"Operations.h"
 	"Fprop.h"
@@ -472,7 +472,7 @@
 	"RichText.h"
 	<SFML/Graphics.hpp>
 
-1622280750 c:\c++\others\proiectlc+sp\menu.h
+1622552104 c:\c++\others\proiectlc+sp\menu.h
 	<SFML/Graphics.hpp>
 	<bits/stdc++.h>
 	"Operations.h"
@@ -483,7 +483,7 @@
 	"FNC.h"
 	"RichText.h"
 
-1622194424 c:\c++\others\proiectlc+sp\richtext.h
+1622463354 c:\c++\others\proiectlc+sp\richtext.h
 	<vector>
 	<SFML/Graphics/Transformable.hpp>
 	<SFML/Graphics/Drawable.hpp>
@@ -491,7 +491,7 @@
 	<SFML/Graphics/Text.hpp>
 	<SFML/System/Vector2.hpp>
 
-1622280156 source:c:\c++\others\proiectlc+sp\operations.cpp
+1622552611 source:c:\c++\others\proiectlc+sp\operations.cpp
 	"Operations.h"
 
 1618340124 source:c:\c++\others\proiectlc+sp\read.cpp
@@ -513,6 +513,6 @@
 1622195753 source:c:\c++\others\proiectlc+sp\ui.cpp
 	"UI.h"
 
-1622285905 source:c:\c++\others\proiectlc+sp\menu.cpp
+1622552803 source:c:\c++\others\proiectlc+sp\menu.cpp
 	"Menu.h"
 

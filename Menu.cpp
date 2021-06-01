@@ -1,6 +1,6 @@
 #include "Menu.h"
 
-string transformare_structura_relaxata_in_structura_stricta(string c2, map <string,int> m, sf::RenderWindow &window)
+void transformare_structura_relaxata_in_structura_stricta(string c2, map <string,int> m, sf::RenderWindow &window)
 {
     string dublicat;
 
@@ -20,6 +20,8 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
     window.clear();
     window.draw(visualtxt);
     window.display();
+
+
 
 
     dublicat = c2;
@@ -68,10 +70,47 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
             /* marchez operatorul ca si vizitat*/
             ok[cntmax] = true;
 
+
+
             /* pun paranteze daca nu sunt deja puse , la ! trebuie pus doar la literalul din dreapta, la restul de operatori si in stanga si in dreapta*/
 
             if(dublicat[pozmax] =='!')
             {
+                if(pozmax + 1 >= dublicat.size())
+                {
+
+                    int cnt = 0;
+                            while(window.isOpen() && cnt == 0)
+                            {sf::Event event;
+                                while(window.pollEvent(event) && cnt == 0)
+                                {
+
+                                    switch(event.type)
+                                    {
+                                        case sf::Event::Closed:
+                                        {
+                                            cnt++;
+                                            window.close();
+                                            break;
+                                        }
+
+                                        case sf::Event::KeyReleased:
+                                        {
+                                           visualtxt.setCharacterColor(0, pozmax, sf::Color::Red);
+                                            visualtxt << sf::Color::Red << "\nPropozitia nu este bine formata!";
+                                            window.clear();
+                                            window.draw(visualtxt);
+                                            window.display();
+                                            return;
+
+                                            cnt++;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                }
 
                 string cpy2;
 
@@ -135,12 +174,107 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
                     /*
                     ss << '\n' <<"Propozita nu este bine formata";
                     */
-                    exit(0);
+                    int cnt = 0;
+                            while(window.isOpen() && cnt == 0)
+                            {sf::Event event;
+                                while(window.pollEvent(event) && cnt == 0)
+                                {
+
+                                    switch(event.type)
+                                    {
+                                        case sf::Event::Closed:
+                                        {
+                                            cnt++;
+                                            window.close();
+                                            break;
+                                        }
+
+                                        case sf::Event::KeyReleased:
+                                        {
+                                           visualtxt.setCharacterColor(0, pozmax, sf::Color::Red);
+                                            visualtxt << sf::Color::Red << "\nPropozitia nu este bine formata!";
+                                            window.clear();
+                                            window.draw(visualtxt);
+                                            window.display();
+                                            return;
+
+                                            cnt++;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
                 }
+
+                            visualtxt.clear();
+                            visualtxt << sf::Color::White << dublicat;
+
+                            int cnt = 0;
+                            while(window.isOpen() && cnt == 0)
+                            {sf::Event event;
+                                while(window.pollEvent(event) && cnt == 0)
+                                {
+
+                                    switch(event.type)
+                                    {
+                                        case sf::Event::Closed:
+                                        {
+                                            cnt++;
+                                            window.close();
+                                            break;
+                                        }
+
+                                        case sf::Event::KeyReleased:
+                                        {
+                                            window.clear();
+                                            visualtxt.setCharacterColor(0, pozmax + 1, sf::Color::Green);
+                                             window.draw(visualtxt);
+                                            window.display();
+                                            visualtxt.setCharacterColor(0, pozmax + 1, sf::Color::White);
+
+                                            cnt++;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
 
             }
             else
             {
+                if(pozmax - 1 < 0 || pozmax + 1 >= dublicat.size())
+                {
+                       int cnt = 0;
+                            while(window.isOpen() && cnt == 0)
+                            {sf::Event event;
+                                while(window.pollEvent(event) && cnt == 0)
+                                {
+
+                                    switch(event.type)
+                                    {
+                                        case sf::Event::Closed:
+                                        {
+                                            cnt++;
+                                            window.close();
+                                            break;
+                                        }
+
+                                        case sf::Event::KeyReleased:
+                                        {
+                                           visualtxt.setCharacterColor(0, pozmax, sf::Color::Red);
+                                            visualtxt << sf::Color::Red << "\nPropozitia nu este bine formata!";
+                                            window.clear();
+                                            window.draw(visualtxt);
+                                            window.display();
+                                            return;
+
+                                            cnt++;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                }
                 string cpy2;
 
                 cpy2.clear();
@@ -170,7 +304,37 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
                     ss << '\n' <<"Propozita nu este bine formata";
                     ss << '\n' <<".Numarul de paranteze deschise nu este egal cu nr de paranteze inchise";
                     */
-                    exit(0);
+
+                    int cnt = 0;
+                            while(window.isOpen() && cnt == 0)
+                            {sf::Event event;
+                                while(window.pollEvent(event) && cnt == 0)
+                                {
+
+                                    switch(event.type)
+                                    {
+                                        case sf::Event::Closed:
+                                        {
+                                            cnt++;
+                                            window.close();
+                                            break;
+                                        }
+
+                                        case sf::Event::KeyReleased:
+                                        {
+                                           visualtxt.setCharacterColor(0, pozmax, sf::Color::Red);
+                                            visualtxt << sf::Color::Red << "\nPropozitia nu este bine formata!";
+                                            window.clear();
+                                            window.draw(visualtxt);
+                                            window.display();
+                                            return;
+
+                                            cnt++;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
                 }
 
                 int pozdr;
@@ -198,7 +362,37 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
                    /* ss << '\n' <<"Propozita nu este bine formata";
                     ss << '\n' <<".Numarul de paranteze deschise nu este egal cu nr de paranteze inchise";
                     */
-                    exit(0);
+
+                    int cnt = 0;
+                            while(window.isOpen() && cnt == 0)
+                            {sf::Event event;
+                                while(window.pollEvent(event) && cnt == 0)
+                                {
+
+                                    switch(event.type)
+                                    {
+                                        case sf::Event::Closed:
+                                        {
+                                            cnt++;
+                                            window.close();
+                                            break;
+                                        }
+
+                                        case sf::Event::KeyReleased:
+                                        {
+                                           visualtxt.setCharacterColor(0, pozmax, sf::Color::Red);
+                                            visualtxt << sf::Color::Red << "\nPropozitia nu este bine formata!";
+                                            window.clear();
+                                            window.draw(visualtxt);
+                                            window.display();
+                                            return;
+
+                                            cnt++;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
 
                 }
 
@@ -255,8 +449,11 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
                                         case sf::Event::KeyReleased:
                                         {
                                             window.clear();
+                                            visualtxt.setCharacterColor(0, pozmax + 1, sf::Color::Green);
                                              window.draw(visualtxt);
                                             window.display();
+                                            visualtxt.setCharacterColor(0, pozmax + 1, sf::Color::White);
+
                                             cnt++;
                                             break;
                                         }
@@ -272,7 +469,7 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
             }
         }
 
-        return dublicat;
+
 }
 
 
