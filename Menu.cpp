@@ -871,28 +871,10 @@ void Menu::enter(sf::RenderWindow &window)
 
 
                                             string s2 = ss.str();
-                                            int nrendl = 1;
-                                            int lenline = 0;
-                                            int lenmaxline = 1;
-                                            for(int i = 0; i < s2.size(); i++)
-                                            {
-                                                if(s2[i] == '\n')
-                                                {
-                                                    nrendl++;
-                                                    lenmaxline = max(lenline, lenmaxline);
-                                                }
-                                                else
-                                                {
-                                                    lenline++;
-
-                                                }
-
-                                            }
-
-
-                                            int f = min(this->width / lenmaxline, this->height / nrendl);
-
-                                                txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                            if(s2.size() > 1000)
+                                                txt[cur_window][0].setScale(sf::Vector2f(0.5, 0.5));
+                                                if(ss.str().size() > 10000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
 
                                             this->draw(window);
 
@@ -1435,7 +1417,11 @@ void Menu::enter(sf::RenderWindow &window)
                                                          int f = string(txt[cur_window][0].getString()).size();
                                                         f = 1ll * this->width * this->height / 100 /  f;
 
-                                                        txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                                         if(ss.str().size() > 1000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.5, 0.5));
+                                                            if(ss.str().size() > 10000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+
                                                         this->draw(window);
                                             }
                                             else
@@ -1544,8 +1530,11 @@ void Menu::enter(sf::RenderWindow &window)
                                                          int f = string(txt[cur_window][0].getString()).size();
                                                         f = 1ll * this->width * this->height / 100 /  f;
 
-                                                        txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                                        if(ss.str().size() > 1000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.5, 0.5));
                                                         this->draw(window);
+                                                        if(ss.str().size() > 10000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
                                             }
                                             else
                                                 cnt++;
@@ -1649,8 +1638,10 @@ void Menu::enter(sf::RenderWindow &window)
                                                         txt[cur_window][0].setPosition(sf::Vector2f(0.,0.));
                                                          int f = string(txt[cur_window][0].getString()).size();
                                                         f = 1ll * this->width * this->height / 100 /  f;
-
-                                                        txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                                        if(ss.str().size() > 1000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.5, 0.5));
+                                                        if(ss.str().size() > 10000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
                                                         this->draw(window);
                                             }
                                             else
@@ -1753,8 +1744,10 @@ void Menu::enter(sf::RenderWindow &window)
                                              int f = string(txt[cur_window][0].getString()).size();
                                             f = 1ll * this->width * this->height / 100 /  f;
 
-
-                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                            if(ss.str().size() > 1000)
+                                                txt[cur_window][0].setScale(sf::Vector2f(0.5, 0.5));
+                                                if(ss.str().size() > 10000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
                                             this->draw(window);
                                             cnt3++;
 
@@ -1862,8 +1855,10 @@ void Menu::enter(sf::RenderWindow &window)
                                              int f = string(txt[cur_window][0].getString()).size();
                                             f = 1ll * this->width * this->height / 100 /  f;
 
-
-                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                            if(ss.str().size() > 1000)
+                                                txt[cur_window][0].setScale(sf::Vector2f(0.5, 0.5));
+                                                if(ss.str().size() > 10000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
                                             this->draw(window);
                                             cnt3++;
 
@@ -1969,8 +1964,10 @@ void Menu::enter(sf::RenderWindow &window)
                                              int f = string(txt[cur_window][0].getString()).size();
                                             f = 1ll * this->width * this->height / 100 /  f;
 
-
-                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
+                                            if(ss.str().size() > 1000)
+                                                txt[cur_window][0].setScale(sf::Vector2f(0.5, 0.5));
+                                                if(ss.str().size() > 10000)
+                                                            txt[cur_window][0].setScale(sf::Vector2f(0.1, 0.1));
                                             this->draw(window);
                                             cnt3++;
 
