@@ -92,7 +92,7 @@ string transformare_structura_relaxata_in_structura_stricta(string c2, map <stri
             if(dublicat[pozmax] =='!')
             {
 
-                if(pozmax + 1 >= dublicat.size())
+                 if(pozmax + 1 >= dublicat.size() || !(pozmax - 1 < 0 || dublicat[pozmax - 1] == '(' ||  dublicat[pozmax - 1] == '!' ||  dublicat[pozmax - 1] == '|' ||  dublicat[pozmax - 1] == '&' ||  dublicat[pozmax - 1] == '>'  ||  dublicat[pozmax - 1] == '~'))
                 {
                     cout <<"Prop nu este bine formata";
                     exit(0);

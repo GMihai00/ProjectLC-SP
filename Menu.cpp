@@ -76,7 +76,8 @@ void transformare_structura_relaxata_in_structura_stricta(string c2, map <string
 
             if(dublicat[pozmax] =='!')
             {
-                if(pozmax + 1 >= dublicat.size())
+
+                if(pozmax + 1 >= dublicat.size() || !(pozmax - 1 < 0 || dublicat[pozmax - 1] == '(' ||  dublicat[pozmax - 1] == '!' ||  dublicat[pozmax - 1] == '|' ||  dublicat[pozmax - 1] == '&' ||  dublicat[pozmax - 1] == '>'  ||  dublicat[pozmax - 1] == '~'))
                 {
 
                     int cnt = 0;

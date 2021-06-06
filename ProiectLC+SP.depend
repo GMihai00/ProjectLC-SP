@@ -491,7 +491,7 @@
 	<SFML/Graphics/Text.hpp>
 	<SFML/System/Vector2.hpp>
 
-1622552611 source:c:\c++\others\proiectlc+sp\operations.cpp
+1622973021 source:c:\c++\others\proiectlc+sp\operations.cpp
 	"Operations.h"
 
 1618340124 source:c:\c++\others\proiectlc+sp\read.cpp
@@ -513,6 +513,6 @@
 1622195753 source:c:\c++\others\proiectlc+sp\ui.cpp
 	"UI.h"
 
-1622921682 source:c:\c++\others\proiectlc+sp\menu.cpp
+1622972983 source:c:\c++\others\proiectlc+sp\menu.cpp
 	"Menu.h"
 
